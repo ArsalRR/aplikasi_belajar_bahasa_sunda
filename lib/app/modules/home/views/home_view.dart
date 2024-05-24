@@ -67,16 +67,16 @@ class HomeView extends GetView<HomeController> {
                               items: [
                                 PopupMenuItem<String>(
                                   value: 'logout',
-                                  child: Text('Log out'),
+                                  child: Text('Keluar'),
                                 ),
                               ],
                             ).then((value) {
                               if (value == 'logout') {
                                 controller.logout();
                                 Get.snackbar(
-                                  'Logout',
-                                  'You have been logged out',
-                                  snackPosition: SnackPosition.BOTTOM,
+                                  'Keluar',
+                                  'Sampai Jumpa Lagi',
+                                  snackPosition: SnackPosition.TOP,
                                 );
                               }
                             });

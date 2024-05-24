@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:capstone_project/app/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -18,9 +19,12 @@ class LoginController extends GetxController {
           email: email, password: password);
       if (userCredential.user!.emailVerified) {
         Get.snackbar(
-          'Success',
+          'Berhasil',
+          
           'Sudah Berhasil Login :)',
-          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor:Colors.green,
+          colorText: Colors.white,
+          snackPosition: SnackPosition.TOP,
           duration: Duration(seconds: 2),
           margin: EdgeInsets.all(12),
           
