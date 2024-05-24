@@ -11,34 +11,36 @@ class ListSundaView extends GetView<ListSundaController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(' Bahasa Sunda'
-        
-        
-        ),
-  
+        title: const Text('Bahasa Sunda'),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: ListView(
         padding: EdgeInsets.all(8.0),
         children: [
-          Card(
-            child: ListTile(
-              title: Text('Materi Bahasa Sunda'),
-              subtitle: Text('Ayo Belajar Bahasa Sunda'),
-              onTap: () {
-                Get.toNamed(Routes.BHS_SUNDA);
-              },
+          SizedBox(
+            height: 200, 
+            child: Card(
+              child: ListTile(
+                title: Text('Materi Bahasa Sunda'),
+                subtitle: Text('Ayo Belajar Bahasa Sunda'),
+                onTap: () {
+                  Get.toNamed(Routes.BHS_SUNDA);
+                },
+              ),
             ),
           ),
           SizedBox(height: 20),
-          Card(
-            child: ListTile(
-              title: Text('Vidio Pembelajaran'),
-              subtitle: Text('Vidio Pembelajaran Bahasa Sunda'),
-              onTap: () {
+          SizedBox(
+            height: 200,
+            child: Card(
+              child: ListTile(
+                title: Text('Vidio Pembelajaran'),
+                subtitle: Text('Vidio Pembelajaran Bahasa Sunda'),
+                onTap: () {
                 
-              },
+                },
+              ),
             ),
           ),
         ],
