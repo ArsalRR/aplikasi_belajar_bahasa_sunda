@@ -1,29 +1,70 @@
-import 'package:capstone_project/app/modules/register/controllers/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:capstone_project/app/modules/register/controllers/register_controller.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            SizedBox(height: 50),
-            Center(
-              child: Image.asset(
-                'assets/img/study.png', 
-                height: 200,
+      body: Column(
+        children: [
+          ClipPath(
+            clipper: OvalBottomBorderClipper(),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+              color: Color(0xff008DDA),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back, color: Colors.white),
+                      onPressed: () => Get.back(),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Belum Punya Akun?',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    'Daftar Dahulu',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  Center(
+                    child: Image.asset(
+                      'assets/img/study.png',
+                      height: 150,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                ],
               ),
             ),
-            SizedBox(height: 30),
-            Container(
+          ),
+          Expanded(
+            child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-              color: Color(0xff008DDA),
-                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
               ),
               child: Column(
                 children: [
@@ -34,54 +75,62 @@ class RegisterView extends GetView<RegisterController> {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0),
-                        borderSide: BorderSide.none,
+                     
                       ),
+                      prefixIcon: Icon(Icons.email),
                       labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
                     ),
                   ),
                   SizedBox(height: 20),
-                  Obx(() => TextField(
-                    obscureText: controller.isPasswordHidden.value,
-                    controller: controller.passwordController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      labelText: 'Password',
-                      labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          controller.isPasswordHidden.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: Colors.black,
+                  Obx(
+                    () => TextField(
+                      obscureText: controller.isPasswordHidden.value,
+                      controller: controller.passwordController,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(32.0),
+                     
                         ),
-                        onPressed: () {
-                          controller.isPasswordHidden.value =
-                              !controller.isPasswordHidden.value;
-                        },
+                        prefixIcon: Icon(Icons.lock),
+                        labelText: 'Password',
+                        labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            controller.isPasswordHidden.value
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            controller.isPasswordHidden.value =
+                                !controller.isPasswordHidden.value;
+                          },
+                        ),
                       ),
                     ),
-                  )),
+                  ),
                   SizedBox(height: 20),
-                  Container(
+                  SizedBox(
+                    width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        onPrimary: Colors.black,
+                        primary: Color(0xff008DDA),
+                        onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
                       child: Text(
                         'Daftar Sekarang',
-                        style: TextStyle(fontSize: 18, color: Colors.black, fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       onPressed: () {
@@ -108,28 +157,11 @@ class RegisterView extends GetView<RegisterController> {
                       },
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Already have an account? ',
-                        style: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
-                      ),
-                      TextButton(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
-                        ),
-                        onPressed: () => Get.back(),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
