@@ -12,7 +12,6 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    // Fetch the current user's email from Firebase Auth
     final User? user = FirebaseAuth.instance.currentUser;
     final String userEmail = user?.email ?? 'User';
 
@@ -92,7 +91,6 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-              // menu di sini
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 transform: Matrix4.translationValues(0.0, -120.0, 0.0),
@@ -123,12 +121,12 @@ class HomeView extends GetView<HomeController> {
                       link: "/bhs-sunda",
                     ),
                     KategoriWidget(
-                      icon_path: "assets/svg/jadwal.svg",
-                      title: "Jadwal Pelajaran",
+                      icon_path: "assets/svg/video.svg",
+                      title: "Vidio Pembelajaran",
                       link: "/",
                     ),
                     KategoriWidget(
-                      icon_path: "assets/svg/.svg",
+                      icon_path: "assets/svg/book.svg",
                       title: "Daftar Tugas",
                       link: "/",
                     ),
@@ -137,7 +135,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Container(
                 transform: Matrix4.translationValues(0.0, -60.0, 0.0),
-                child: Text("Aplikasi Belajar "),
+                child: Text("LMS SMP Serang Baru"),
               ),
             ],
           ),
