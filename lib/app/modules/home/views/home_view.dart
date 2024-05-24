@@ -2,6 +2,7 @@ import 'package:capstone_project/app/widget/KategoriWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -10,6 +11,10 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    // Fetch the current user's email from Firebase Auth
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String userEmail = user?.email ?? 'User';
 
     return Scaffold(
       body: SafeArea(
@@ -24,40 +29,66 @@ class HomeView extends GetView<HomeController> {
                       height: size.height * 0.5,
                       color: const Color(0xff008DDA),
                     ),
-                 Positioned(
-  top: 20,
-  right: 20,
-  child: GestureDetector(
-    onTap: () {
-      showMenu(
-        context: context,
-        position: RelativeRect.fromLTRB(size.width, kToolbarHeight, 0, 0),
-        items: [
-          PopupMenuItem<String>(
-            value: 'logout',
-            child: Text('Log out'),
-          ),
-        ],
-      ).then((value) {
-        if (value == 'logout') {
-         
-          controller.logout(); 
-          Get.snackbar(
-            'Logout',
-            'You have been logged out',
-            snackPosition: SnackPosition.BOTTOM,
-          );
-        }
-      });
-    },
-    child: CircleAvatar(
-      backgroundImage: AssetImage('assets/img/gamer.png'),
-      radius: 20,
-    ),
-  ),
-),
-
-
+                    Positioned(
+                      top: 20,
+                      left: 20,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Hai, $userEmail',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8), 
+                          Text(
+                            'Selamat Datang Kembali',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            showMenu(
+                              context: context,
+                              position: RelativeRect.fromLTRB(size.width, kToolbarHeight, 0, 0),
+                              items: [
+                                PopupMenuItem<String>(
+                                  value: 'logout',
+                                  child: Text('Log out'),
+                                ),
+                              ],
+                            ).then((value) {
+                              if (value == 'logout') {
+                                controller.logout();
+                                Get.snackbar(
+                                  'Logout',
+                                  'You have been logged out',
+                                  snackPosition: SnackPosition.BOTTOM,
+                                );
+                              }
+                            });
+                          },
+                          child: CircleAvatar(
+                            backgroundImage: AssetImage('assets/img/gamer.png'),
+                            radius: 20,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
