@@ -16,10 +16,8 @@ dependencies:
   flutter_native_splash: ^2.3.10
   firebase_storage: ^11.6.9
   image_picker: ^1.0.8
-  iconsax: ^0.0.8
   flutter_custom_clippers: ^2.1.0
   flutter_svg: ^1.1.6
-  skeletons: ^0.0.3
   intl:
   http: ^1.2.0
 
