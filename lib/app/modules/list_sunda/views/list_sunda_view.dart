@@ -11,8 +11,13 @@ class ListSundaView extends GetView<ListSundaController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ListSundaView'),
+        title: const Text(' Bahasa Sunda'
+        
+        
+        ),
+  
         centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
       body: ListView(
         padding: EdgeInsets.all(8.0),
