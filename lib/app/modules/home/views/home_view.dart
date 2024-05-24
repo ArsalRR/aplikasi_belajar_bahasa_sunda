@@ -118,11 +118,11 @@ class HomeView extends GetView<HomeController> {
                     KategoriWidget(
                       icon_path: "assets/svg/man.svg",
                       title: "Bahasa Sunda",
-                      link: "/bhs-sunda",
+                      link: "/list-sunda",
                     ),
                     KategoriWidget(
                       icon_path: "assets/svg/video.svg",
-                      title: "Vidio Pembelajaran",
+                      title: "Fiqih",
                       link: "/",
                     ),
                     KategoriWidget(
