@@ -14,7 +14,6 @@ class LoginView extends GetView<LoginController> {
           children: [
             SizedBox(height: 50),
             Center(
-              
               child: Image.asset(
                 'assets/img/std.png',
                 height: 200,
@@ -24,7 +23,7 @@ class LoginView extends GetView<LoginController> {
             Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color:  Color(0xff008DDA), 
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -32,13 +31,13 @@ class LoginView extends GetView<LoginController> {
                   TextField(
                     controller: controller.emailController,
                     decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      labelText: 'Email',
+                      labelText: 'Masukkan Email anda',
                       labelStyle: TextStyle(color: Colors.black),
                     ),
                   ),
@@ -47,14 +46,13 @@ class LoginView extends GetView<LoginController> {
                     obscureText: controller.isPasswordHidden.value,
                     controller: controller.passwordController,
                     decoration: InputDecoration(
-                   
+                      prefixIcon: Icon(Icons.vpn_key),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      labelText: 'Password',
+                      labelText: 'Masukkan Password anda',
                       labelStyle: TextStyle(color: Colors.black),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -71,22 +69,36 @@ class LoginView extends GetView<LoginController> {
                     ),
                   )),
                   SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                
+                      },
+                      child: Text(
+                        'Lupa Password?',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   Container(
                     height: 50,
+                    width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        onPrimary: Colors.black,
+                        primary: Color(0xff008DDA),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32.0),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                       child: Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18, color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        'Masuk',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        
                       ),
                       onPressed: () {
                         if (controller.emailController.text.isEmpty) {
@@ -113,23 +125,28 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have any account? ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      TextButton(
-                        child: Text(
-                          'Register',
-                          style: TextStyle(color: Colors.black),
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        primary: Color(0xff008DDA),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        onPressed: () {
-                          Get.toNamed(Routes.REGISTER);
-                        },
-                      )
-                    ],
+                      ),
+                      child: Text(
+                        'Daftar',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xff008DDA),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: () {
+                        Get.toNamed(Routes.REGISTER);
+                      },
+                    ),
                   ),
                 ],
               ),
