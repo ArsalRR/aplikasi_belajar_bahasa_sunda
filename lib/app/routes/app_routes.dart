@@ -9,6 +9,8 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const LIST_SUNDA = _Paths.LIST_SUNDA;
+  static const LIST_PAI = _Paths.LIST_PAI;
+  static const PAI = _Paths.PAI;
 }
 
 abstract class _Paths {
@@ -20,4 +22,6 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const RESET_PASSWORD = '/reset-password';
   static const LIST_SUNDA = '/list-sunda';
+  static const LIST_PAI = '/list-pai';
+  static const PAI = '/pai';
 }
