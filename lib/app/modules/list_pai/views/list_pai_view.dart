@@ -13,34 +13,36 @@ class ListPaiView extends GetView<ListPaiController> {
       appBar: AppBar(
         title: const Text('Pendidikan Agama Islam'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
       ),
       body: ListView(
         padding: EdgeInsets.all(8.0),
         children: [
           SizedBox(
-            height: 200, 
+      height: 100,
             child: Card(
-              child: ListTile(
-                title: Text(' Materi Pendidikan Agama Islam'),
-                subtitle: Text('Ayo Belajar Pai'),
-                onTap: () {
-                  Get.toNamed(Routes.PAI);
-                },
-              ),
+                child: ListTile(
+              leading: Icon(Icons.book, color: Colors.orange, size: 40),
+              title: Text('Materi Pendidikan Agama Islam', style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('Ayo Belajar Agama Islam'),
+              onTap: () {
+                Get.toNamed(Routes.PAI);
+              },
+            ),
             ),
           ),
           SizedBox(height: 20),
           SizedBox(
-            height: 200,
+            height: 100,
             child: Card(
-              child: ListTile(
-                title: Text('Vidio Pembelajaran'),
-                subtitle: Text('Vidio Pembelajaran Pendidikan Agama Islam'),
-                onTap: () {
-                
-                },
-              ),
+               child: ListTile(
+              leading: Icon(Icons.video_library, color: Colors.red, size: 40),
+              title: Text('Materi Vidio Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('Ayo Belajar Agama Islam'),
+              onTap: () {
+           
+              },
+            ),
             ),
           ),
         ],

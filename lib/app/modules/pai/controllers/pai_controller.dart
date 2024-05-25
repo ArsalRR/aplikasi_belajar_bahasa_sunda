@@ -1,6 +1,6 @@
+import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class PaiController extends GetxController {
   var pai = [].obs;
@@ -16,12 +16,14 @@ class PaiController extends GetxController {
   void fetchData() async {
     isLoading.value = true;
     try {
-      var url = Uri.parse('https://cors-anywhere.herokuapp.com/https://doa-doa-api-ahmadramadhan.fly.dev/api');
+      var url = Uri.parse('https://api.allorigins.win/get?url=https://doa-doa-api-ahmadramadhan.fly.dev/api');
       var response = await http.get(url);
 
       if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        print('Response Data: $data'); 
+        var jsonData = jsonDecode(response.body);
+        var utf8Content = utf8.decode(jsonData['contents'].codeUnits);
+        var data = jsonDecode(utf8Content);
+        print('Response Data: $data');
 
         if (data is List) {
           pai.value = data;

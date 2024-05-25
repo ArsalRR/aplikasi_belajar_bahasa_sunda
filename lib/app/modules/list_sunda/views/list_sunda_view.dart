@@ -13,34 +13,37 @@ class ListSundaView extends GetView<ListSundaController> {
       appBar: AppBar(
         title: const Text('Bahasa Sunda'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
       ),
       body: ListView(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(16.0),
         children: [
-          SizedBox(
-            height: 200, 
-            child: Card(
-              child: ListTile(
-                title: Text('Materi Bahasa Sunda'),
-                subtitle: Text('Ayo Belajar Bahasa Sunda'),
-                onTap: () {
-                  Get.toNamed(Routes.BHS_SUNDA);
-                },
-              ),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: ListTile(
+              
+              leading: Icon(Icons.book, color: Colors.orange, size: 40),
+              title: Text('Materi Bahasa Sunda', style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('Ayo Belajar Bahasa Sunda'),
+              onTap: () {
+                Get.toNamed(Routes.BHS_SUNDA);
+              },
             ),
           ),
           SizedBox(height: 20),
-          SizedBox(
-            height: 200,
-            child: Card(
-              child: ListTile(
-                title: Text('Vidio Pembelajaran'),
-                subtitle: Text('Vidio Pembelajaran Bahasa Sunda'),
-                onTap: () {
-                
-                },
-              ),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.video_library, color: Colors.red, size: 40),
+              title: Text('Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('Video Pembelajaran Bahasa Sunda'),
+              onTap: () {
+                // Add navigation or functionality here
+              },
             ),
           ),
         ],

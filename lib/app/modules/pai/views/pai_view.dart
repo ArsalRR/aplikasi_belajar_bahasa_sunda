@@ -8,6 +8,7 @@ class PaiView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor:Color(0xFFCAF4FF), 
       appBar: AppBar(
         title: Text('Materi Pendidikan Agama Islam'),
       ),
@@ -20,41 +21,83 @@ class PaiView extends StatelessWidget {
           return Center(child: Text(controller.pesanerror.value));
         }
 
-        return ListView.builder(
-          itemCount: controller.pai.length,
+        return ListView.separated(
+          physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             final doa = controller.pai[index];
-            return Card(
-              margin: EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      doa['doa'] ?? 'Unknown',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            return Container(
+              color: Colors.grey.shade200,
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: doa['doa'] ?? 'Unknown',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: 0.5,
+                              color: Colors.grey.shade800,
+                            ),
+                          )
+                        ],
+                        text: "${index + 1}. ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
                       doa['ayat'] ?? 'Unknown',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        letterSpacing: 0.5,
+                        fontSize: 28,
+                        color: Colors.grey.shade800,
+                      ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
                       doa['latin'] ?? 'Unknown',
-                      style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+                      style: TextStyle(
+                        letterSpacing: 0.5,
+                        color:Colors.black,
+                      ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      'Artinya: ${doa['artinya'] ?? 'Unknown'}',
-                      style: TextStyle(fontSize: 14),
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      doa['artinya'] ?? 'Unknown',
+                      style: TextStyle(
+                        letterSpacing: 0.5,
+                        color: Colors.grey.shade800,
+                      ),
                     ),
-                  ],
-                ),
+                  )
+                ],
               ),
             );
           },
+          separatorBuilder: (context, index) => Divider(
+            height: 40,
+            color: Color(0xFFCAF4FF),
+          ),
+          itemCount: controller.pai.length,
         );
       }),
     );
