@@ -9,7 +9,7 @@ class PaiView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doa-Doa'),
+        title: Text('Materi Pendidikan Agama Islam'),
       ),
       body: Obx(() {
         if (controller.isLoading.value) {

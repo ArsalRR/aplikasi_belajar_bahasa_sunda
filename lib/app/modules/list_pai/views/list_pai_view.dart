@@ -22,7 +22,7 @@ class ListPaiView extends GetView<ListPaiController> {
             height: 200, 
             child: Card(
               child: ListTile(
-                title: Text('Materi PAI'),
+                title: Text(' Materi Pendidikan Agama Islam'),
                 subtitle: Text('Ayo Belajar Pai'),
                 onTap: () {
                   Get.toNamed(Routes.PAI);
@@ -36,7 +36,7 @@ class ListPaiView extends GetView<ListPaiController> {
             child: Card(
               child: ListTile(
                 title: Text('Vidio Pembelajaran'),
-                subtitle: Text('Vidio Pembelajaran Bahasa Sunda'),
+                subtitle: Text('Vidio Pembelajaran Pendidikan Agama Islam'),
                 onTap: () {
                 
                 },
