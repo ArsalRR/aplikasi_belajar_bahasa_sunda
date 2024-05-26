@@ -50,7 +50,7 @@ class ListSundaView extends GetView<ListSundaController> {
                 title: Text('Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text('Video Pembelajaran Bahasa Sunda'),
                 onTap: () {
-                  // Add navigation or functionality here
+                 
                 },
               ),
             ),

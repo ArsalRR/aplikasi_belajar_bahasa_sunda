@@ -50,7 +50,7 @@ class ListPaiView extends GetView<ListPaiController> {
                 title: Text('Materi Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text('Ayo Belajar Agama Islam'),
                 onTap: () {
-                  // Add navigation or functionality here
+                
                 },
               ),
             ),
