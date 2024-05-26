@@ -8,56 +8,56 @@ class RegisterView extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          ClipPath(
-            clipper: OvalBottomBorderClipper(),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-              color: Color(0xff008DDA),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back, color: Colors.white),
-                      onPressed: () => Get.back(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ClipPath(
+              clipper: OvalBottomBorderClipper(),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                color: Color(0xff008DDA),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () => Get.back(),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Belum Punya Akun?',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
+                    SizedBox(height: 10),
+                    Text(
+                      'Belum Punya Akun?',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Daftar Dahulu',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
+                    Text(
+                      'Daftar Dahulu',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 10),
-                  Center(
-                    child: Image.asset(
-                      'assets/img/study.png',
-                      height: 150,
+                    SizedBox(height: 10),
+                    Center(
+                      child: Image.asset(
+                        'assets/img/study.png',
+                        height: 150,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                ],
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
+            Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -75,11 +75,11 @@ class RegisterView extends GetView<RegisterController> {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0),
-                     
                       ),
                       prefixIcon: Icon(Icons.email),
                       labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
+                      labelStyle:
+                          TextStyle(color: Colors.black, fontFamily: 'Poppins'),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -92,11 +92,11 @@ class RegisterView extends GetView<RegisterController> {
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32.0),
-                     
                         ),
                         prefixIcon: Icon(Icons.lock),
                         labelText: 'Password',
-                        labelStyle: TextStyle(color: Colors.black, fontFamily: 'Poppins'),
+                        labelStyle: TextStyle(
+                            color: Colors.black, fontFamily: 'Poppins'),
                         suffixIcon: IconButton(
                           icon: Icon(
                             controller.isPasswordHidden.value
@@ -118,8 +118,8 @@ class RegisterView extends GetView<RegisterController> {
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff008DDA),
-                        onPrimary: Colors.white,
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color(0xff008DDA),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
@@ -160,8 +160,8 @@ class RegisterView extends GetView<RegisterController> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
