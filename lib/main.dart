@@ -9,8 +9,11 @@ import 'app/utils/loading.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(apiKey: "AIzaSyATHaKgPOBKm7puAv132W6BxPj7Dy5D-Rs", appId:"1:790355774790:android:a0d7d3026b1e4097956947" , messagingSenderId: "790355774790", projectId: "my-project-f34c5")
-  );
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyATHaKgPOBKm7puAv132W6BxPj7Dy5D-Rs",
+          appId: "1:790355774790:android:a0d7d3026b1e4097956947",
+          messagingSenderId: "790355774790",
+          projectId: "my-project-f34c5"));
   runApp(MyApp());
 }
 
