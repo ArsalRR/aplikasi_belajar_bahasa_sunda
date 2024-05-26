@@ -19,31 +19,40 @@ class ListSundaView extends GetView<ListSundaController> {
         padding: EdgeInsets.all(16.0),
         children: [
           Card(
+            color: Colors.white,
+            elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: ListTile(
-              
-              leading: Icon(Icons.book, color: Colors.orange, size: 40),
-              title: Text('Materi Bahasa Sunda', style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text('Ayo Belajar Bahasa Sunda'),
-              onTap: () {
-                Get.toNamed(Routes.BHS_SUNDA);
-              },
+            child: Container(
+              height: 100,
+              child: ListTile(
+                leading: Icon(Icons.book, color: Colors.orange, size: 40),
+                title: Text('Materi Bahasa Sunda', style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text('Ayo Belajar Bahasa Sunda'),
+                onTap: () {
+                  Get.toNamed(Routes.BHS_SUNDA);
+                },
+              ),
             ),
           ),
           SizedBox(height: 20),
           Card(
+            color: Colors.white,
+            elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: ListTile(
-              leading: Icon(Icons.video_library, color: Colors.red, size: 40),
-              title: Text('Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text('Video Pembelajaran Bahasa Sunda'),
-              onTap: () {
-                // Add navigation or functionality here
-              },
+            child: Container(
+              height: 100,
+              child: ListTile(
+                leading: Icon(Icons.video_library, color: Colors.red, size: 40),
+                title: Text('Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text('Video Pembelajaran Bahasa Sunda'),
+                onTap: () {
+                  // Add navigation or functionality here
+                },
+              ),
             ),
           ),
         ],

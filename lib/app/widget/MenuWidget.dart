@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 
-class KategoriWidget extends StatelessWidget {
+class MenuWidget extends StatelessWidget {
   final String icon_path;
   final String title;
   final String link;
-  const KategoriWidget(
+  const MenuWidget(
       {super.key,
       required this.icon_path,
       required this.title,

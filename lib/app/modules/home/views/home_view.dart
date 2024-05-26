@@ -1,4 +1,4 @@
-import 'package:capstone_project/app/widget/KategoriWidget.dart';
+import 'package:capstone_project/app/widget/MenuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
@@ -115,17 +115,17 @@ class HomeView extends GetView<HomeController> {
                   shrinkWrap: true,
                   primary: false,
                   children: [
-                    KategoriWidget(
+                    MenuWidget(
                       icon_path: "assets/svg/man.svg",
                       title: "Bahasa Sunda",
                       link: "/list-sunda",
                     ),
-                    KategoriWidget(
+                    MenuWidget(
                       icon_path: "assets/svg/praying.svg",
                       title: "Pendidikan Agama",
                       link: "/list-pai",
                     ),
-                    KategoriWidget(
+                    MenuWidget(
                       icon_path: "assets/svg/book.svg",
                       title: "Daftar Tugas",
                       link: "/",

@@ -16,33 +16,43 @@ class ListPaiView extends GetView<ListPaiController> {
         backgroundColor: Colors.transparent,
       ),
       body: ListView(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(16.0),
         children: [
           SizedBox(
-      height: 100,
+            height: 100,
             child: Card(
-                child: ListTile(
-              leading: Icon(Icons.book, color: Colors.orange, size: 40),
-              title: Text('Materi Pendidikan Agama Islam', style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text('Ayo Belajar Agama Islam'),
-              onTap: () {
-                Get.toNamed(Routes.PAI);
-              },
-            ),
+              color: Colors.white,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.book, color: Colors.orange, size: 40),
+                title: Text('Materi Pendidikan Agama Islam', style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text('Ayo Belajar Agama Islam'),
+                onTap: () {
+                  Get.toNamed(Routes.PAI);
+                },
+              ),
             ),
           ),
           SizedBox(height: 20),
           SizedBox(
             height: 100,
             child: Card(
-               child: ListTile(
-              leading: Icon(Icons.video_library, color: Colors.red, size: 40),
-              title: Text('Materi Vidio Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text('Ayo Belajar Agama Islam'),
-              onTap: () {
-           
-              },
-            ),
+              color: Colors.white,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.video_library, color: Colors.red, size: 40),
+                title: Text('Materi Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text('Ayo Belajar Agama Islam'),
+                onTap: () {
+                  // Add navigation or functionality here
+                },
+              ),
             ),
           ),
         ],
