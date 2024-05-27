@@ -8,7 +8,7 @@ class PaiView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:Color(0xFFCAF4FF), 
+        backgroundColor: Colors.white, 
       appBar: AppBar(
         title: Text('Materi Pendidikan Agama Islam'),
       ),

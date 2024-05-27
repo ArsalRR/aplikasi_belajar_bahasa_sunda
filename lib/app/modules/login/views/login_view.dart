@@ -33,7 +33,7 @@ class LoginView extends GetView<LoginController> {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email),
                       filled: true,
-                      fillColor: Colors.black,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

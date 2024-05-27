@@ -18,44 +18,79 @@ class ListSundaView extends GetView<ListSundaController> {
       body: ListView(
         padding: EdgeInsets.all(16.0),
         children: [
-          Card(
-            color: Colors.white,
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: Container(
-              height: 100,
-              child: ListTile(
-                leading: Icon(Icons.book, color: Colors.orange, size: 40),
-                title: Text('Materi Bahasa Sunda', style: TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: Text('Ayo Belajar Bahasa Sunda'),
-                onTap: () {
-                  Get.toNamed(Routes.BHS_SUNDA);
-                },
-              ),
-            ),
+          buildCard(
+            imageUrl: 'assets/img/studying.png', 
+            title: 'Materi Bahasa Sunda',
+            subtitle: 'Temukan keterampilan terbaik dirimu',
+         
+            onTap: () {
+              Get.toNamed(Routes.BHS_SUNDA);
+            },
           ),
           SizedBox(height: 20),
-          Card(
-            color: Colors.white,
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: Container(
-              height: 100,
-              child: ListTile(
-                leading: Icon(Icons.video_library, color: Colors.red, size: 40),
-                title: Text('Video Pembelajaran', style: TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: Text('Video Pembelajaran Bahasa Sunda'),
-                onTap: () {
-                 
-                },
-              ),
-            ),
+          buildCard(
+            imageUrl: 'assets/img/watching.png',
+            title: 'Vidio Pembelajaran',
+            subtitle: 'Lihat Vidio Untuk Tingkatkan Bahasamu',
+      
+            onTap: () {
+         
+            },
           ),
+        
         ],
+      ),
+    );
+  }
+
+  Widget buildCard({
+    required String imageUrl,
+    required String title,
+    required String subtitle,
+
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      color: Colors.white,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          height: 100,
+          child: Row(
+            children: [
+              Image.asset(
+                imageUrl,
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(subtitle),
+                  ],
+                ),
+              ),
+            
+            ],
+          ),
+        ),
       ),
     );
   }
