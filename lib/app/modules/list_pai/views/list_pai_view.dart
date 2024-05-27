@@ -1,6 +1,8 @@
 import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
+
 import '../controllers/list_pai_controller.dart';
 
 class ListPaiView extends GetView<ListPaiController> {
@@ -9,31 +11,62 @@ class ListPaiView extends GetView<ListPaiController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pendidikan Agama Islam'),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-      ),
-      body: ListView(
-        padding: EdgeInsets.all(16.0),
+      body: Stack(
         children: [
-          buildCard(
-            imageUrl: 'assets/img/praying.png', 
-            title: 'Materi Pendidikan Agama Islam',
-            subtitle: 'Ayo Belajar Agama Islam',
-            onTap: () {
-              Get.toNamed(Routes.PAI);
-            },
+        
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: ClipPath(
+              clipper: WaveClipperOne(),
+              child: Container(
+                height: 150,
+                color: Color(0xff008DDA),
+                child: AppBar(
+                  title: const Text(
+                    'Pendidikan Agama Islam',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.white),
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                ),
+              ),
+            ),
           ),
-          SizedBox(height: 20),
-          buildCard(
-            imageUrl: 'assets/img/watching.png',
-            title: 'Materi Video Pembelajaran',
-            subtitle: 'Ayo Belajar Agama Islam',
-            onTap: () {
-             
-            },
+          // Body content
+          Padding(
+            padding: const EdgeInsets.only(top: 120.0),
+            child: ListView(
+              padding: EdgeInsets.all(16.0),
+              children: [
+                buildCard(
+                  imageUrl: 'assets/img/praying.png',
+                  title: 'Materi Pendidikan Agama Islam',
+                  subtitle: 'Ayo Belajar Agama Islam',
+                  onTap: () {
+                    Get.toNamed(Routes.PAI);
+                  },
+                ),
+                SizedBox(height: 20),
+                buildCard(
+                  imageUrl: 'assets/img/watching.png',
+                  title: 'Materi Video Pembelajaran',
+                  subtitle: 'Ayo Belajar Agama Islam',
+                  onTap: () {},
+                ),
+              ],
+            ),
           ),
+     
+         
         ],
       ),
     );
