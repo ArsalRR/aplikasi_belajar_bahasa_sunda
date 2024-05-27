@@ -116,17 +116,13 @@ class HomeView extends GetView<HomeController> {
                   primary: false,
                   children: [
                     MenuWidget(
-                      icon_path: "assets/svg/man.svg",
-                      title: "Bahasa Sunda",
-                      link: "/list-sunda",
-                    ),
-                    MenuWidget(
-                      icon_path: "assets/svg/praying.svg",
-                      title: "Pendidikan Agama",
-                      link: "/list-pai",
-                    ),
-                    MenuWidget(
                       icon_path: "assets/svg/book.svg",
+                      title: "Materi Pelajaran",
+                      link: "/list-sunda",
+                      
+                    ),
+                    MenuWidget(
+                      icon_path: "assets/svg/task.svg",
                       title: "Daftar Tugas",
                       link: "/",
                     ),

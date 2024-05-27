@@ -11,6 +11,7 @@ abstract class Routes {
   static const LIST_SUNDA = _Paths.LIST_SUNDA;
   static const LIST_PAI = _Paths.LIST_PAI;
   static const PAI = _Paths.PAI;
+  static const LIST_MATERI = _Paths.LIST_MATERI;
 }
 
 abstract class _Paths {
@@ -24,4 +25,5 @@ abstract class _Paths {
   static const LIST_SUNDA = '/list-sunda';
   static const LIST_PAI = '/list-pai';
   static const PAI = '/pai';
+  static const LIST_MATERI = '/list-materi';
 }
