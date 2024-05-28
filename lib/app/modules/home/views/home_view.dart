@@ -122,6 +122,11 @@ class HomeView extends GetView<HomeController> {
                       
                     ),
                     MenuWidget(
+                      icon_path: "assets/svg/quiz.svg",
+                      title: "Quiz",
+                      link: "/quiz",
+                    ),
+                      MenuWidget(
                       icon_path: "assets/svg/task.svg",
                       title: "Daftar Tugas",
                       link: "/",

@@ -4,12 +4,12 @@ import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-
 import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-
+import '../modules/quiz/bindings/quiz_binding.dart';
+import '../modules/quiz/views/quiz_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
@@ -53,7 +53,10 @@ class AppPages {
       page: () => ListSundaView(),
       binding: ListSundaBinding(),
     ),
- 
- 
+    GetPage(
+      name: _Paths.QUIZ,
+      page: () => const QuizView(),
+      binding: QuizBinding(),
+    ),
   ];
 }
