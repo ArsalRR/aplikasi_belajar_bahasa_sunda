@@ -4,6 +4,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../controllers/home_controller.dart';
+import 'package:quickalert/quickalert.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -57,35 +58,52 @@ class HomeView extends GetView<HomeController> {
                     Positioned(
                       top: 20,
                       right: 20,
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            showMenu(
-                              context: context,
-                              position: RelativeRect.fromLTRB(size.width, kToolbarHeight, 0, 0),
-                              items: [
-                                PopupMenuItem<String>(
-                                  value: 'logout',
-                                  child: Text('Keluar'),
-                                ),
-                              ],
-                            ).then((value) {
-                              if (value == 'logout') {
-                                controller.logout();
-                                Get.snackbar(
-                                  'Keluar',
-                                  'Sampai Jumpa Lagi',
-                                  snackPosition: SnackPosition.TOP,
-                                );
-                              }
-                            });
-                          },
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/img/gamer.png'),
-                            radius: 20,
+                      child: Column(
+                        children: [
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                showMenu(
+                                  context: context,
+                                  position: RelativeRect.fromLTRB(size.width, kToolbarHeight + 40, 0, 0),
+                                  items: [
+                                    PopupMenuItem<String>(
+                                      value: 'logout',
+                                      child: Text('Keluar'),
+                                    ),
+                                  ],
+                                ).then((value) {
+                                  if (value == 'logout') {
+                                    QuickAlert.show(
+                                      context: context,
+                                      type: QuickAlertType.confirm,
+                                      title: 'Konfirmasi',
+                                      text: 'Apakah Anda yakin ingin keluar?',
+                                      confirmBtnText: 'Ya',
+                                      cancelBtnText: 'Tidak',
+                                      onConfirmBtnTap: () {
+                                        controller.logout();
+                                        Get.snackbar(
+                                          'Keluar',
+                                          'Sampai Jumpa Lagi',
+                                          snackPosition: SnackPosition.TOP,
+                                        );
+                                        // Close the QuickAlert dialog
+                                        Navigator.of(context).pop();
+                                      },
+                                    );
+                                  }
+                                });
+                              },
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage('assets/img/gamer.png'),
+                                radius: 20,
+                              ),
+                            ),
                           ),
-                        ),
+                          SizedBox(height: 10), // Add some space between the avatar and the menu
+                        ],
                       ),
                     ),
                   ],
@@ -119,14 +137,13 @@ class HomeView extends GetView<HomeController> {
                       icon_path: "assets/svg/book.svg",
                       title: "Materi Pelajaran",
                       link: "/list-sunda",
-                      
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/quiz.svg",
                       title: "Quiz",
                       link: "/quiz",
                     ),
-                      MenuWidget(
+                    MenuWidget(
                       icon_path: "assets/svg/task.svg",
                       title: "Daftar Tugas",
                       link: "/",

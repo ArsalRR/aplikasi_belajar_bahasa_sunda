@@ -172,7 +172,7 @@ class Result extends StatelessWidget {
     } else if (resultScore >= 10) {
       resultText = 'Harus Banyak Membaca';
     } else {
-      resultText = 'Nilai Mu Jelek';
+      resultText = 'Nilaimu Jelek';
       print(resultScore);
     }
     return resultText;
@@ -190,7 +190,7 @@ class Result extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            'Score $resultScore',
+            'Nilai Kamu adalah $resultScore',
             style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
