@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart'; 
+import 'package:quickalert/quickalert.dart';
 import '../controllers/quiz_controller.dart';
 
 class QuizView extends GetView<QuizController> {
@@ -8,6 +9,39 @@ class QuizView extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nameController = TextEditingController();
+
+    Future.delayed(Duration.zero, () {
+      if (!controller.nameEntered.value) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Masukkan Nama'),
+              content: TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  hintText: 'Nama',
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    if (nameController.text.isNotEmpty) {
+                      controller.setName(nameController.text);
+                      Get.back();
+                    }
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
+
     return Scaffold(
       body: Stack(
         children: [
@@ -55,6 +89,7 @@ class QuizView extends GetView<QuizController> {
                   return Result(
                     controller.totalScore.value,
                     controller.resetQuiz,
+                    controller.userName.value,
                   );
                 }
               }),
@@ -152,28 +187,26 @@ class Answer extends StatelessWidget {
   }
 }
 
-
 class Result extends StatelessWidget {
   final int resultScore;
   final VoidCallback resetHandler;
+  final String userName;
 
-  const Result(this.resultScore, this.resetHandler, {Key? key})
+  const Result(this.resultScore, this.resetHandler, this.userName, {Key? key})
       : super(key: key);
+
   String get resultPhrase {
     String resultText;
     if (resultScore >= 90) {
       resultText = 'Sempurna';
-      print(resultScore);
     } else if (resultScore >= 75) {
       resultText = 'Lumayan';
-      print(resultScore);
     } else if (resultScore >= 60) {
       resultText = 'Tingkatkan Belajarmu';
     } else if (resultScore >= 10) {
       resultText = 'Harus Banyak Membaca';
     } else {
       resultText = 'Nilaimu Jelek';
-      print(resultScore);
     }
     return resultText;
   }
@@ -185,12 +218,12 @@ class Result extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            resultPhrase,
+            'Hai $userName!',
             style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
           Text(
-            'Nilai Kamu adalah $resultScore',
+            'Nilai Anda: $resultScore\n$resultPhrase',
             style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),

@@ -32,6 +32,7 @@ flutter:
   assets:
     - assets/img/
     - assets/svg/
+    - assets/fonts/
     
 
 flutter_native_splash:
