@@ -5,46 +5,46 @@ class QuizController extends GetxController {
   {
     'questionText': '1. Naon basa Sundana "makan"?',
     'answers': [
-      {'text': 'Nulis', 'score': -2},
-      {'text': 'Maca', 'score': -2},
+      {'text': 'Nulis', 'score': -5},
+      {'text': 'Maca', 'score': -5},
       {'text': 'Dahar', 'score': 20},
-      {'text': 'Diajar', 'score': -2},
+      {'text': 'Diajar', 'score': -5},
     ],
   },
   {
     'questionText': '2. Naon basa Sundana "minum"?',
     'answers': [
-      {'text': 'Tuang', 'score': -2},
-      {'text': 'Hees', 'score': -2},
-      {'text': 'Maén', 'score': -2},
+      {'text': 'Tuang', 'score': -5},
+      {'text': 'Hees', 'score': -5},
+      {'text': 'Maén', 'score': -5},
       {'text': 'Nginum', 'score': 20},
     ],
   },
   {
     'questionText': '3. Naon basa Sundana "tidur"?',
     'answers': [
-      {'text': 'Nyarios', 'score': -2},
+      {'text': 'Nyarios', 'score': -5},
       {'text': 'Sare', 'score': 20},
-      {'text': 'Diajar', 'score': -2},
-      {'text': 'Sumping', 'score': -2},
+      {'text': 'Diajar', 'score': -5},
+      {'text': 'Sumping', 'score': -5},
     ],
   },
   {
     'questionText': '4. Naon basa Sundana "berbicara"?',
     'answers': [
       {'text': 'Nyarios', 'score': 20},
-      {'text': 'Dahar', 'score': -2},
-      {'text': 'Nginum', 'score': -2},
-      {'text': 'Maén', 'score': -2},
+      {'text': 'Dahar', 'score': -5},
+      {'text': 'Nginum', 'score': -5},
+      {'text': 'Maén', 'score': -5},
     ],
   },
   {
     'questionText': '5. Naon basa Sundana "bermain"?',
     'answers': [
-      {'text': 'Nulis', 'score': -2},
-      {'text': 'Maca', 'score': -2},
+      {'text': 'Nulis', 'score': -5},
+      {'text': 'Maca', 'score': -5},
       {'text': 'Maén', 'score': 20},
-      {'text': 'Diajar', 'score': -2},
+      {'text': 'Diajar', 'score': -5},
     ],
   },
 ];
