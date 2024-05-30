@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class QuizController extends GetxController {
+     FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   final questions = const [
     {
       'questionText': '1. Naon basa Sundana "makan"?',

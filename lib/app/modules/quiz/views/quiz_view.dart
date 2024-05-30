@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart'; 
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../controllers/quiz_controller.dart';
 
 class QuizView extends GetView<QuizController> {
@@ -9,38 +10,11 @@ class QuizView extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController = TextEditingController();
+    final Size size = MediaQuery.of(context).size;
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String userEmail = user?.email ?? 'User';
 
-    Future.delayed(Duration.zero, () {
-      if (!controller.nameEntered.value) {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('Masukkan Nama'),
-              content: TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  hintText: 'Nama',
-                ),
-              ),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text('OK'),
-                  onPressed: () {
-                    if (nameController.text.isNotEmpty) {
-                      controller.setName(nameController.text);
-                      Get.back();
-                    }
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      }
-    });
+    controller.setName(userEmail);
 
     return Scaffold(
       body: Stack(
@@ -195,24 +169,64 @@ class Result extends StatelessWidget {
   const Result(this.resultScore, this.resetHandler, this.userName, {Key? key})
       : super(key: key);
 
+  void showResultAlert(BuildContext context, String title, String message, QuickAlertType alertType) {
+    Future.delayed(Duration.zero, () {
+      QuickAlert.show(
+        context: context,
+        type: alertType,
+        title: title,
+        text: message,
+        confirmBtnText: 'OK',
+      );
+    });
+  }
+
   String get resultPhrase {
-    String resultText;
     if (resultScore >= 90) {
-      resultText = 'Sempurna';
+      return 'Sempurna';
     } else if (resultScore >= 75) {
-      resultText = 'Lumayan';
+      return 'Lumayan';
     } else if (resultScore >= 60) {
-      resultText = 'Tingkatkan Belajarmu';
+      return 'Tingkatkan Belajarmu';
     } else if (resultScore >= 10) {
-      resultText = 'Harus Banyak Membaca';
+      return 'Harus Banyak Membaca';
     } else {
-      resultText = 'Nilaimu Jelek';
+      return 'Nilaimu Jelek';
     }
-    return resultText;
+  }
+
+  QuickAlertType get alertType {
+    if (resultScore >= 90) {
+      return QuickAlertType.success;
+    } else if (resultScore >= 75) {
+      return QuickAlertType.info;
+    } else if (resultScore >= 60) {
+      return QuickAlertType.warning;
+    } else {
+      return QuickAlertType.error;
+    }
+  }
+
+  String get alertTitle {
+    if (resultScore >= 90) {
+      return 'Selamat!';
+    } else if (resultScore >= 75) {
+      return 'Bagus!';
+    } else if (resultScore >= 60) {
+      return 'Hati-Hati!';
+    } else {
+      return 'Coba Lagi!';
+    }
+  }
+
+  String get alertMessage {
+    return 'Nilai Anda: $resultScore\n$resultPhrase';
   }
 
   @override
   Widget build(BuildContext context) {
+    showResultAlert(context, alertTitle, alertMessage, alertType);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +237,7 @@ class Result extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            'Nilai Anda: $resultScore\n$resultPhrase',
+            alertMessage,
             style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),

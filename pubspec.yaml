@@ -36,7 +36,7 @@ flutter:
     
 
 flutter_native_splash:
-  color: "#FEFAF6"
+  color: "#008DDA"
   image: assets/img/sph.png
   android: true
   ios: true

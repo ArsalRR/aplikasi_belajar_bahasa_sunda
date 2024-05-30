@@ -102,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10), // Add some space between the avatar and the menu
+                          SizedBox(height: 10), 
                         ],
                       ),
                     ),
@@ -139,13 +139,13 @@ class HomeView extends GetView<HomeController> {
                       link: "/list-sunda",
                     ),
                     MenuWidget(
-                      icon_path: "assets/svg/quiz.svg",
-                      title: "Quiz",
+                      icon_path: "assets/svg/task.svg",
+                      title: "Daftar Tugas",
                       link: "/quiz",
                     ),
                     MenuWidget(
-                      icon_path: "assets/svg/task.svg",
-                      title: "Daftar Tugas",
+                      icon_path: "assets/svg/school.svg",
+                      title: "Tentang Sekolah",
                       link: "/",
                     ),
                   ],
@@ -153,7 +153,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Container(
                 transform: Matrix4.translationValues(0.0, -60.0, 0.0),
-                child: Text("LMS SMP Serang Baru"),
+                child: Text("Berbasu SMP Serang Baru"),
               ),
             ],
           ),
