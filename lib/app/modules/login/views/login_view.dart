@@ -43,37 +43,37 @@ class LoginView extends GetView<LoginController> {
                   ),
                   SizedBox(height: 20),
                   Obx(() => TextField(
-                    obscureText: controller.isPasswordHidden.value,
-                    controller: controller.passwordController,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.vpn_key),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      labelText: 'Masukkan Password anda',
-                      labelStyle: TextStyle(color: Colors.black),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          controller.isPasswordHidden.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: Colors.black,
+                        obscureText: controller.isPasswordHidden.value,
+                        controller: controller.passwordController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.vpn_key),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          labelText: 'Masukkan Password anda',
+                          labelStyle: TextStyle(color: Colors.black),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              controller.isPasswordHidden.value
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              controller.isPasswordHidden.value =
+                                  !controller.isPasswordHidden.value;
+                            },
+                          ),
                         ),
-                        onPressed: () {
-                          controller.isPasswordHidden.value =
-                              !controller.isPasswordHidden.value;
-                        },
-                      ),
-                    ),
-                  )),
+                      )),
                   SizedBox(height: 20),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
-                Get.toNamed(Routes.RESET_PASSWORD);
+                        Get.toNamed(Routes.RESET_PASSWORD);
                       },
                       child: Text(
                         'Lupa Password?',
@@ -87,7 +87,7 @@ class LoginView extends GetView<LoginController> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff008DDA),
+                        backgroundColor: const Color(0xff008DDA),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -130,7 +130,7 @@ class LoginView extends GetView<LoginController> {
                     width: double.infinity,
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        primary: Color(0xff008DDA),
+                        foregroundColor: Color(0xff008DDA),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),

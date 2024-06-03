@@ -25,10 +25,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
               decoration: BoxDecoration(
                 color: Color(0xff008DDA),
                 borderRadius: BorderRadius.circular(20),
-              
               ),
-              
-
               child: Column(
                 children: [
                   Text(
@@ -61,7 +58,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       ),
                       labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.black),
-                        prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -69,8 +66,8 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        onPrimary: Colors.black,
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
@@ -80,7 +77,10 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                         children: [
                           Text(
                             'Reset Password',
-                            style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(width: 10),
                           Icon(
@@ -98,7 +98,8 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                             colorText: Colors.white,
                           );
                         } else {
-                          controller.resetPassword(controller.emailController.text);
+                          controller
+                              .resetPassword(controller.emailController.text);
                         }
                       },
                     ),
