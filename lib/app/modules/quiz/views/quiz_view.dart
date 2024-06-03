@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -53,7 +55,8 @@ class QuizView extends GetView<QuizController> {
               child: Obx(() {
                 if (controller.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (controller.questionIndex.value < controller.questions.length) {
+                } else if (controller.questionIndex.value <
+                    controller.questions.length) {
                   return Quiz(
                     answerQuestion: controller.answerQuestion,
                     questionIndex: controller.questionIndex.value,
@@ -142,7 +145,7 @@ class Answer extends StatelessWidget {
         child: ElevatedButton(
           onPressed: selectHandler,
           style: ElevatedButton.styleFrom(
-            primary: const Color(0xff008DDA),
+            backgroundColor: const Color(0xff008DDA),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -169,7 +172,8 @@ class Result extends StatelessWidget {
   const Result(this.resultScore, this.resetHandler, this.userName, {Key? key})
       : super(key: key);
 
-  void showResultAlert(BuildContext context, String title, String message, QuickAlertType alertType) {
+  void showResultAlert(BuildContext context, String title, String message,
+      QuickAlertType alertType) {
     Future.delayed(Duration.zero, () {
       QuickAlert.show(
         context: context,
@@ -218,14 +222,15 @@ class Result extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
             child: SizedBox(
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: resetHandler,
                 style: ElevatedButton.styleFrom(
-                  primary: const Color(0xff008DDA),
+                  backgroundColor: const Color(0xff008DDA),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -233,9 +238,9 @@ class Result extends StatelessWidget {
                 child: const Text(
                   'Ulangi',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),
