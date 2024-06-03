@@ -21,6 +21,7 @@ dependencies:
   intl:
   http: ^1.2.0
   quickalert: ^1.1.0
+  web: ^0.5.1
 
 dev_dependencies:
   flutter_test:
