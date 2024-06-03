@@ -1,35 +1,44 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-   var isPasswordHidden = true.obs;
+  var isPasswordHidden = true.obs;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Stream<User?> get streamAuthStatus =>
-      FirebaseAuth.instance.authStateChanges();
+  Stream<User?> get streamAuthStatus => FirebaseAuth.instance.authStateChanges();
 
   void login(String email, String password) async {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       if (userCredential.user!.emailVerified) {
+        DocumentSnapshot userDoc = await firestore
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .get();
+        String role = userDoc['role'];
         Get.snackbar(
           'Berhasil',
-          
           'Sudah Berhasil Login :)',
-          backgroundColor:Colors.green,
+          backgroundColor: Colors.green,
           colorText: Colors.white,
           snackPosition: SnackPosition.TOP,
           duration: Duration(seconds: 2),
           margin: EdgeInsets.all(12),
-          
         );
-        Get.offAllNamed(Routes.HOME);
+        if (role == 'Admin') {
+          Get.offAllNamed(Routes.HOME_GURU);
+        } else {
+          Get.offAllNamed(Routes.HOME);
+        }
       } else {
         Get.snackbar(
           'Error',

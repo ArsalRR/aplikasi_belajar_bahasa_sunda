@@ -113,6 +113,35 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                   ),
                   SizedBox(height: 20),
+                  Obx(
+                    () => DropdownButtonFormField<String>(
+                      value: controller.selectedRole.value.isEmpty
+                          ? null
+                          : controller.selectedRole.value,
+                      items: ['Admin', 'User']
+                          .map((role) => DropdownMenuItem(
+                                value: role,
+                                child: Text(role),
+                              ))
+                          .toList(),
+                      onChanged: (value) {
+                        controller.selectedRole.value = value ?? '';
+                      },
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(32.0),
+                        ),
+                        labelText: 'Select Role',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -148,10 +177,18 @@ class RegisterView extends GetView<RegisterController> {
                             backgroundColor: Colors.red,
                             colorText: Colors.white,
                           );
+                        } else if (controller.selectedRole.value.isEmpty) {
+                          Get.snackbar(
+                            'Error',
+                            'Role tidak boleh kosong',
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
                         } else {
                           controller.register(
                             controller.emailController.text,
                             controller.passwordController.text,
+                            controller.selectedRole.value,
                           );
                         }
                       },
