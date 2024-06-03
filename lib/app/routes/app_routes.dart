@@ -10,6 +10,8 @@ abstract class Routes {
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const LIST_SUNDA = _Paths.LIST_SUNDA;
   static const QUIZ = _Paths.QUIZ;
+  static const HOME_GURU = _Paths.HOME_GURU;
+  static const TENTANG_SEKOLAH = _Paths.TENTANG_SEKOLAH;
 }
 
 abstract class _Paths {
@@ -21,4 +23,6 @@ abstract class _Paths {
   static const RESET_PASSWORD = '/reset-password';
   static const LIST_SUNDA = '/list-sunda';
   static const QUIZ = '/quiz';
+  static const HOME_GURU = '/home-guru';
+  static const TENTANG_SEKOLAH = '/tentang-sekolah';
 }

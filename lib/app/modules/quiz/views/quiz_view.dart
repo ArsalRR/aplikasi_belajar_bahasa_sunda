@@ -195,37 +195,13 @@ class Result extends StatelessWidget {
     }
   }
 
-  QuickAlertType get alertType {
-    if (resultScore >= 90) {
-      return QuickAlertType.success;
-    } else if (resultScore >= 75) {
-      return QuickAlertType.info;
-    } else if (resultScore >= 60) {
-      return QuickAlertType.warning;
-    } else {
-      return QuickAlertType.error;
-    }
-  }
-
-  String get alertTitle {
-    if (resultScore >= 90) {
-      return 'Selamat!';
-    } else if (resultScore >= 75) {
-      return 'Bagus!';
-    } else if (resultScore >= 60) {
-      return 'Hati-Hati!';
-    } else {
-      return 'Coba Lagi!';
-    }
-  }
-
   String get alertMessage {
     return 'Nilai Anda: $resultScore\n$resultPhrase';
   }
 
   @override
   Widget build(BuildContext context) {
-    showResultAlert(context, alertTitle, alertMessage, alertType);
+    showResultAlert(context, 'Quiz Selesai', alertMessage, QuickAlertType.info);
 
     return Center(
       child: Column(

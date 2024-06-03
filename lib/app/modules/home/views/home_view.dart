@@ -89,7 +89,7 @@ class HomeView extends GetView<HomeController> {
                                           'Sampai Jumpa Lagi',
                                           snackPosition: SnackPosition.TOP,
                                         );
-                                        // Close the QuickAlert dialog
+                                      
                                         Navigator.of(context).pop();
                                       },
                                     );
@@ -146,7 +146,7 @@ class HomeView extends GetView<HomeController> {
                     MenuWidget(
                       icon_path: "assets/svg/school.svg",
                       title: "Tentang Sekolah",
-                      link: "/",
+                      link: "/tentang-sekolah",
                     ),
                   ],
                 ),

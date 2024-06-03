@@ -4,6 +4,8 @@ import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/home_guru/bindings/home_guru_binding.dart';
+import '../modules/home_guru/views/home_guru_view.dart';
 import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -14,6 +16,8 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
 import '../modules/reset_password/views/reset_password_view.dart';
+import '../modules/tentang_sekolah/bindings/tentang_sekolah_binding.dart';
+import '../modules/tentang_sekolah/views/tentang_sekolah_view.dart';
 
 part 'app_routes.dart';
 
@@ -55,8 +59,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUIZ,
-      page: () => const QuizView(),
+      page: () => QuizView(),
       binding: QuizBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_GURU,
+      page: () => HomeGuruView(),
+      binding: HomeGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.TENTANG_SEKOLAH,
+      page: () => const TentangSekolahView(),
+      binding: TentangSekolahBinding(),
     ),
   ];
 }
