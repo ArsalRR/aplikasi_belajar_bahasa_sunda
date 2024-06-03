@@ -4,6 +4,10 @@ import 'package:get/get.dart';
 
 import '../controllers/splash_controller.dart';
 
+void main() {
+  runApp(SplashView());
+}
+
 class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
   @override
@@ -18,7 +22,7 @@ class SplashView extends GetView<SplashController> {
             child: Padding(
               padding: const EdgeInsets.only(top: 60),
               child: Text(
-                "LMS SMP Serang Baru",
+                "BERBASU",
                 style: TextStyle(
                     fontSize: 23,
                     color: Colors.white,
@@ -40,10 +44,24 @@ class SplashView extends GetView<SplashController> {
                   'Selamat datang, mari belajar bahasa sunda degan mudah',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                   textAlign: TextAlign.center,
-                )
+                ),
               ],
             ),
           ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                    padding: EdgeInsets.only(bottom: 40),
+                    child: Text(
+                      "By kelompok 3",
+                      style: TextStyle(color: Colors.grey[300]),
+                    )),
+              )
+            ],
+          )
         ],
       ),
     );

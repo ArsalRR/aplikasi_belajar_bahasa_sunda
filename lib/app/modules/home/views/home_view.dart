@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8), 
+                          SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
                             style: TextStyle(
@@ -66,7 +66,8 @@ class HomeView extends GetView<HomeController> {
                               onTap: () {
                                 showMenu(
                                   context: context,
-                                  position: RelativeRect.fromLTRB(size.width, kToolbarHeight + 40, 0, 0),
+                                  position: RelativeRect.fromLTRB(
+                                      size.width, kToolbarHeight + 40, 0, 0),
                                   items: [
                                     PopupMenuItem<String>(
                                       value: 'logout',
@@ -89,7 +90,7 @@ class HomeView extends GetView<HomeController> {
                                           'Sampai Jumpa Lagi',
                                           snackPosition: SnackPosition.TOP,
                                         );
-                                      
+
                                         Navigator.of(context).pop();
                                       },
                                     );
@@ -97,12 +98,13 @@ class HomeView extends GetView<HomeController> {
                                 });
                               },
                               child: CircleAvatar(
-                                backgroundImage: AssetImage('assets/img/gamer.png'),
+                                backgroundImage:
+                                    AssetImage('assets/img/gamer.png'),
                                 radius: 20,
                               ),
                             ),
                           ),
-                          SizedBox(height: 10), 
+                          SizedBox(height: 10),
                         ],
                       ),
                     ),
