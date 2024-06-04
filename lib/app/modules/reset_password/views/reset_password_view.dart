@@ -72,6 +72,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
+                      //perubahan//
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

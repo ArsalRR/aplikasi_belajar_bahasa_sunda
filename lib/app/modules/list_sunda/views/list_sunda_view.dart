@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import '../controllers/list_sunda_controller.dart';
+
 class ListSundaView extends GetView<ListSundaController> {
   const ListSundaView({Key? key}) : super(key: key);
 
@@ -62,7 +63,6 @@ class ListSundaView extends GetView<ListSundaController> {
               ],
             ),
           ),
-          
         ],
       ),
     );
@@ -118,7 +118,3 @@ class ListSundaView extends GetView<ListSundaController> {
     );
   }
 }
-
-
-
-
