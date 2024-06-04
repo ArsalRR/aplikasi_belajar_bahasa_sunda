@@ -21,7 +21,7 @@ dependencies:
   intl:
   http: ^1.2.0
   quickalert: ^1.1.0
-  web: ^0.5.1
+  web: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -36,8 +36,3 @@ flutter:
     - assets/fonts/
     
 
-flutter_native_splash:
-  color: "#008DDA"
-  image: assets/img/sph.png
-  android: true
-  ios: true
