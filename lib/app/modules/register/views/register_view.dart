@@ -118,7 +118,7 @@ class RegisterView extends GetView<RegisterController> {
                       value: controller.selectedRole.value.isEmpty
                           ? null
                           : controller.selectedRole.value,
-                      items: ['Admin', 'User']
+                      items: ['Guru', 'Siswa']
                           .map((role) => DropdownMenuItem(
                                 value: role,
                                 child: Text(role),

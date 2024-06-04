@@ -34,7 +34,7 @@ class LoginController extends GetxController {
           duration: Duration(seconds: 2),
           margin: EdgeInsets.all(12),
         );
-        if (role == 'Admin') {
+        if (role == 'Guru') {
           Get.offAllNamed(Routes.HOME_GURU);
         } else {
           Get.offAllNamed(Routes.HOME);
