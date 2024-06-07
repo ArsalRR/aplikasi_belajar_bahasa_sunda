@@ -43,7 +43,7 @@ class ListSundaView extends GetView<ListSundaController> {
           Padding(
             padding: const EdgeInsets.only(top: 120.0),
             child: ListView(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(17.0),
               children: [
                 buildCard(
                   imageUrl: 'assets/img/studying.png',
@@ -53,9 +53,9 @@ class ListSundaView extends GetView<ListSundaController> {
                     Get.toNamed(Routes.BHS_SUNDA);
                   },
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 21),
                 buildCard(
-                  imageUrl: 'assets/img/watching.png',
+                  imageUrl: 'assets/img/video.png',
                   title: 'Video Pembelajaran',
                   subtitle: 'Lihat vidio untuk tingkatkan bahasamu',
                   onTap: () {},
@@ -87,11 +87,13 @@ class ListSundaView extends GetView<ListSundaController> {
           height: 100,
           child: Row(
             children: [
-              Image.asset(
-                imageUrl,
+              SizedBox(
                 width: 80,
                 height: 80,
-                fit: BoxFit.cover,
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.contain, 
+                ),
               ),
               SizedBox(width: 16),
               Expanded(
