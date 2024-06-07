@@ -8,11 +8,12 @@ class RegisterController extends GetxController {
   var isPasswordHidden = true.obs;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
   var selectedRole = ''.obs;
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  void register(String email, String password, String role) async {
+  void register(String email, String password, String nama, String role) async {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -20,6 +21,7 @@ class RegisterController extends GetxController {
       );
       await firestore.collection('users').doc(userCredential.user!.uid).set({
         'email': email,
+        'nama': nama,
         'role': role,
       });
       Get.snackbar(
@@ -78,6 +80,7 @@ class RegisterController extends GetxController {
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
+    fullNameController.dispose();
     super.onClose();
   }
 }
