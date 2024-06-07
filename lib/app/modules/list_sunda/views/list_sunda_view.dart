@@ -55,9 +55,9 @@ class ListSundaView extends GetView<ListSundaController> {
                 ),
                 SizedBox(height: 20),
                 buildCard(
-                  imageUrl: 'assets/img/watching.png',
+                  imageUrl: 'assets/img/videonew.png',
                   title: 'Video Pembelajaran',
-                  subtitle: 'Lihat vidio untuk tingkatkan bahasamu',
+                  subtitle: 'Lihat video untuk tingkatkan bahasamu',
                   onTap: () {},
                 ),
               ],
@@ -89,8 +89,8 @@ class ListSundaView extends GetView<ListSundaController> {
             children: [
               Image.asset(
                 imageUrl,
-                width: 80,
-                height: 80,
+                width: 70,
+                height: 90,
                 fit: BoxFit.cover,
               ),
               SizedBox(width: 16),

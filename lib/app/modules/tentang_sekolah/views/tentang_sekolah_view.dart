@@ -88,7 +88,7 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                               Text(
                                 "Terwujudnya Warga Sekolah Unggulan yang Religius, Cerdas, Terampil, Berkarakter dan Berwawasan Global",
                                 style: TextStyle(fontSize: 12),
-                                textAlign: TextAlign.justify,
+                                textAlign: TextAlign.center,
                               ),
                               SizedBox(
                                 height: 40,
