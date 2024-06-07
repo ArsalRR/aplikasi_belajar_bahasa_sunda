@@ -6,6 +6,7 @@ class BhsSundaController extends GetxController {
   var sunda = [].obs;
   var isLoading = false.obs;
   var pesanerror = ''.obs;
+  var isDialogShowing = false.obs;
 
   @override
   void onInit() {
@@ -20,10 +21,8 @@ class BhsSundaController extends GetxController {
       var response = await http.get(url);
 
       if (response.statusCode == 200) {
-
         var data = jsonDecode(response.body);
-        
-       
+
         if (data is Map && data.containsKey('words')) {
           sunda.value = data['words'];
         } else {
