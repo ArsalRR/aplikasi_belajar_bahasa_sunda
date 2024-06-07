@@ -15,13 +15,13 @@ dependencies:
   cloud_firestore: ^4.15.8
   flutter_native_splash: ^2.3.10
   firebase_storage: ^11.6.9
-  image_picker: ^1.0.8
+  image_picker: ^1.1.2
   flutter_custom_clippers: ^2.1.0
   flutter_svg: ^1.1.6
   intl:
   http: ^1.2.0
   quickalert: ^1.1.0
-  web: ^0.3.0
+  web: ^0.5.1
 
 dev_dependencies:
   flutter_test:
@@ -34,5 +34,3 @@ flutter:
     - assets/img/
     - assets/svg/
     - assets/fonts/
-    
-
