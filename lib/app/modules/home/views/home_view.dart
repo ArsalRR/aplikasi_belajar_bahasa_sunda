@@ -2,7 +2,6 @@ import 'package:capstone_project/app/widget/MenuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../controllers/home_controller.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -12,9 +11,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
-    final User? user = FirebaseAuth.instance.currentUser;
-    final String userEmail = user?.email ?? 'User';
 
     return Scaffold(
       body: SafeArea(
@@ -35,20 +31,22 @@ class HomeView extends GetView<HomeController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Hai, $userEmail',
+                          Obx(() => Text(
+                            'Hai, ${controller.fullName.value}',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 13,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
-                          ),
+                          )),
+                          SizedBox(height: 8),
+                        
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

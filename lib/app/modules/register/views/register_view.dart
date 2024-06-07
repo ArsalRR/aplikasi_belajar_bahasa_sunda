@@ -69,6 +69,21 @@ class RegisterView extends GetView<RegisterController> {
               child: Column(
                 children: [
                   TextField(
+                    controller: controller.fullNameController,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
+                      prefixIcon: Icon(Icons.person),
+                      labelText: 'Nama Lengkap',
+                      labelStyle:
+                          TextStyle(color: Colors.black, fontFamily: 'Poppins'),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
                     controller: controller.emailController,
                     decoration: InputDecoration(
                       filled: true,
@@ -133,6 +148,7 @@ class RegisterView extends GetView<RegisterController> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
+                        prefixIcon: Icon(Icons.work),
                         labelText: 'Select Role',
                         labelStyle: TextStyle(
                           color: Colors.black,
@@ -163,7 +179,14 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                       ),
                       onPressed: () {
-                        if (controller.emailController.text.isEmpty) {
+                        if (controller.fullNameController.text.isEmpty) {
+                          Get.snackbar(
+                            'Error',
+                            'Nama lengkap tidak boleh kosong',
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
+                        } else if (controller.emailController.text.isEmpty) {
                           Get.snackbar(
                             'Error',
                             'Email tidak boleh kosong',
@@ -188,6 +211,7 @@ class RegisterView extends GetView<RegisterController> {
                           controller.register(
                             controller.emailController.text,
                             controller.passwordController.text,
+                            controller.fullNameController.text,
                             controller.selectedRole.value,
                           );
                         }
