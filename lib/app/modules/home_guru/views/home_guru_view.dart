@@ -5,10 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quickalert/quickalert.dart';
 import '../controllers/home_guru_controller.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+
 class HomeGuruView extends GetView<HomeGuruController> {
   const HomeGuruView({Key? key}) : super(key: key);
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
     final User? user = FirebaseAuth.instance.currentUser;
@@ -136,7 +137,7 @@ Widget build(BuildContext context) {
                     MenuWidget(
                       icon_path: "assets/svg/book.svg",
                       title: "Materi",
-                      link: "/",
+                      link: "/setting",
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/creative-writing.svg",

@@ -11,6 +11,7 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
+<<<<<<< HEAD
           backgroundColor: const Color.fromRGBO(33, 150, 243, 1),
           title: Text(
             "Tentang Sekolah",
@@ -21,6 +22,12 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                 Get.back();
               },
               icon: Icon(Icons.arrow_back)),
+=======
+          backgroundColor: Colors.blue,
+          title: Text("Tentang Sekolah")
+          
+          ,
+>>>>>>> b9804e121e066fe3a68174c87ccb14f1b6fea035
           centerTitle: true,
         ),
         body: SingleChildScrollView(

@@ -35,18 +35,18 @@ class HomeView extends GetView<HomeController> {
                             'Hai, ${controller.fullName.value}',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold,
                             ),
                           )),
                           SizedBox(height: 8),
-                        
+                         
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -68,12 +68,18 @@ class HomeView extends GetView<HomeController> {
                                       size.width, kToolbarHeight + 40, 0, 0),
                                   items: [
                                     PopupMenuItem<String>(
+                                      value: 'setting',
+                                      child: Text('Setting'),
+                                    ),
+                                    PopupMenuItem<String>(
                                       value: 'logout',
                                       child: Text('Keluar'),
                                     ),
                                   ],
                                 ).then((value) {
-                                  if (value == 'logout') {
+                                  if (value == 'setting') {
+                                    Get.toNamed('/setting');  
+                                  } else if (value == 'logout') {
                                     QuickAlert.show(
                                       context: context,
                                       type: QuickAlertType.confirm,
