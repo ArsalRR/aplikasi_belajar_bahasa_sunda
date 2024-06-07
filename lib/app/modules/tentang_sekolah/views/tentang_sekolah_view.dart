@@ -11,8 +11,16 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text("Tentang Sekolah"),
+          backgroundColor: const Color.fromRGBO(33, 150, 243, 1),
+          title: Text(
+            "Tentang Sekolah",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back)),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -61,7 +69,9 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                           EdgeInsets.symmetric(horizontal: size.width * 0.06),
                       child: Text(
                         "Jayasampurna, Kec. Serang Baru, Kabupaten Bekasi, Jawa Barat 17330",
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ),
@@ -78,22 +88,23 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                               Text(
                                 "VISI SMPN1 SERANG BARU",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
+                                    fontWeight: FontWeight.bold, fontSize: 14),
                               ),
                               SizedBox(
                                 height: 6,
                               ),
                               Text(
                                 "Terwujudnya Warga Sekolah Unggulan yang Religius, Cerdas, Terampil, Berkarakter dan Berwawasan Global",
+                                style: TextStyle(fontSize: 12),
                                 textAlign: TextAlign.justify,
                               ),
                               SizedBox(
-                                height: 60,
+                                height: 40,
                               ),
                               Text(
                                 "MISI SMPN1 SERANG BARU",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
+                                    fontWeight: FontWeight.bold, fontSize: 14),
                               ),
                               SizedBox(
                                 height: 6,
@@ -113,14 +124,74 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                                     Expanded(
                                         child: Text(
                                       'Menciptakan kenyamanan kegiatan beribadah bagi warga sekolah',
+                                      style: TextStyle(fontSize: 12),
                                       textAlign: TextAlign.justify,
                                     ))
                                   ],
                                 ),
                               ),
-                              Text(
-                                "\n- Mewujudkan sistem pembelajaran yang kreatif dan inovatif\n- Mewadahi bakat minat peserta didik dalam kegiatan organisasi sekolah dan pengembangan diri\n- Mewujudkan pembiasaan pendidikan karakter dalam keseluruhan kegiatan sekolah",
-                                textAlign: TextAlign.justify,
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.width * 0.01),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      size: 6,
+                                    ),
+                                    SizedBox(
+                                      width: 4,
+                                    ),
+                                    Expanded(
+                                        child: Text(
+                                      'Mewujudkan sistem pembelajaran yang kreatif dan inovatif',
+                                      style: TextStyle(fontSize: 12),
+                                      textAlign: TextAlign.justify,
+                                    ))
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.width * 0.01),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      size: 6,
+                                    ),
+                                    SizedBox(
+                                      width: 4,
+                                    ),
+                                    Expanded(
+                                        child: Text(
+                                      'Mewadahi bakat minat peserta didik dalam kegiatan organisasi sekolah dan pengembangan diri',
+                                      style: TextStyle(fontSize: 12),
+                                      textAlign: TextAlign.justify,
+                                    ))
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.width * 0.01),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      size: 6,
+                                    ),
+                                    SizedBox(
+                                      width: 4,
+                                    ),
+                                    Expanded(
+                                        child: Text(
+                                      'Mewujudkan pembiasaan pendidikan karakter dalam keseluruhan kegiatan sekolah',
+                                      style: TextStyle(fontSize: 12),
+                                      textAlign: TextAlign.justify,
+                                    ))
+                                  ],
+                                ),
                               ),
                             ],
                           )),

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               initialRoute:
                   snapshot.data != null && snapshot.data!.emailVerified == true
                       ? Routes.HOME
-                      : Routes.SPLASH,
+                      : Routes.LOGIN,
               getPages: AppPages.routes,
               theme: ThemeData(
                 primarySwatch: Colors.indigo,
