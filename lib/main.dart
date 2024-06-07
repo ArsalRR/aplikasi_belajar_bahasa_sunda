@@ -13,7 +13,9 @@ void main() async {
           apiKey: "AIzaSyATHaKgPOBKm7puAv132W6BxPj7Dy5D-Rs",
           appId: "1:790355774790:android:a0d7d3026b1e4097956947",
           messagingSenderId: "790355774790",
-          projectId: "my-project-f34c5"));
+          projectId: "my-project-f34c5",
+          storageBucket: "my-project-f34c5.appspot.com"));
+
   runApp(MyApp());
 }
 

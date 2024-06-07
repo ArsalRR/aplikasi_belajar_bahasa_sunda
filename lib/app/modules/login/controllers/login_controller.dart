@@ -11,7 +11,8 @@ class LoginController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Stream<User?> get streamAuthStatus => FirebaseAuth.instance.authStateChanges();
+  Stream<User?> get streamAuthStatus =>
+      FirebaseAuth.instance.authStateChanges();
 
   void login(String email, String password) async {
     try {
