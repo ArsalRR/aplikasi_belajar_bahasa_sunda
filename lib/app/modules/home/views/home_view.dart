@@ -39,8 +39,7 @@ class HomeView extends GetView<HomeController> {
                               fontWeight: FontWeight.bold,
                             ),
                           )),
-                          SizedBox(height: 8),
-                         
+                        
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
