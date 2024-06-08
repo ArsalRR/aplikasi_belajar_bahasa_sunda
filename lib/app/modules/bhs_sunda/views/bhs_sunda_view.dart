@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 import '../controllers/bhs_sunda_controller.dart';
 
 class BhsSundaView extends GetView<BhsSundaController> {
@@ -43,8 +44,23 @@ class BhsSundaView extends GetView<BhsSundaController> {
           Padding(
             padding: const EdgeInsets.only(top: 120.0),
             child: Obx(() {
-              if (controller.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());
+              if (controller.isLoading.value && !controller.isDialogShowing.value) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  QuickAlert.show(
+                    context: context,
+                    type: QuickAlertType.loading,
+                    title: 'Tunggu',
+                    text: 'Sedang menampilkan materi',
+                  );
+                  controller.isDialogShowing.value = true;
+                });
+              }
+
+              if (!controller.isLoading.value && controller.isDialogShowing.value) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.of(context).pop();
+                  controller.isDialogShowing.value = false;
+                });
               }
 
               if (controller.pesanerror.isNotEmpty) {
