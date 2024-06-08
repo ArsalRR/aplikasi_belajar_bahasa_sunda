@@ -12,7 +12,10 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text("Tentang Sekolah"),
+          title: Text("Tentang Sekolah"
+      
+          ),
+        
           centerTitle: true,
         ),
         body: SingleChildScrollView(
