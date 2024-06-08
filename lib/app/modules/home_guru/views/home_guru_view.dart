@@ -69,12 +69,18 @@ class HomeGuruView extends GetView<HomeGuruController> {
                                       size.width, kToolbarHeight + 40, 0, 0),
                                   items: [
                                     PopupMenuItem<String>(
+                                      value: 'setting',
+                                      child: Text('Setting'),
+                                    ),
+                                    PopupMenuItem<String>(
                                       value: 'logout',
                                       child: Text('Keluar'),
                                     ),
                                   ],
                                 ).then((value) {
-                                  if (value == 'logout') {
+                                  if (value == 'setting') {
+                                    Get.toNamed('/setting');  
+                                  } else if (value == 'logout') {
                                     QuickAlert.show(
                                       context: context,
                                       type: QuickAlertType.confirm,
@@ -137,7 +143,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                     MenuWidget(
                       icon_path: "assets/svg/book.svg",
                       title: "Materi",
-                      link: "/setting",
+                      link: "/",
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/creative-writing.svg",

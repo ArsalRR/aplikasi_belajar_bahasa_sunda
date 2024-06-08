@@ -9,6 +9,7 @@ class HomeController extends GetxController {
   
   final RxString fullName = ''.obs;
   final RxString email = ''.obs;
+  final RxString profileImageUrl = ''.obs;
   final count = 0.obs;
   
   @override
@@ -24,6 +25,7 @@ class HomeController extends GetxController {
       DocumentSnapshot userDoc = await firestore.collection('users').doc(user.uid).get();
       if (userDoc.exists) {
         fullName.value = userDoc['nama'] ?? '';
+        profileImageUrl.value = userDoc['profileImageUrl'] ?? '';
       }
     }
   }

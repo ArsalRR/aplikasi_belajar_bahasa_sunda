@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:quickalert/quickalert.dart';
 
 class SettingView extends StatefulWidget {
   @override
@@ -90,11 +91,28 @@ class _SettingViewState extends State<SettingView> {
           _profileImageUrl = downloadUrl;
           _isLoading = false;
         });
+
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.success,
+          title: 'Berhasil',
+          text: 'Foto Profile Anda sudah di ganti',
+          confirmBtnText: 'OK',
+        );
       } catch (e) {
         print('Error uploading image: $e');
         setState(() {
           _isLoading = false;
         });
+
+      
+        QuickAlert.show(
+          context: context,
+          type: QuickAlertType.error,
+          title: 'Gagal',
+          text: 'Gagal update Foto Profile Coba Lagi.',
+          confirmBtnText: 'OK',
+        );
       }
     }
   }
