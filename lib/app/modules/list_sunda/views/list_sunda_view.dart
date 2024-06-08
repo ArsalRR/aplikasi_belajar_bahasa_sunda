@@ -87,13 +87,11 @@ class ListSundaView extends GetView<ListSundaController> {
           height: 100,
           child: Row(
             children: [
-              SizedBox(
-                width: 80,
-                height: 80,
-                child: Image.asset(
-                  imageUrl,
-                  fit: BoxFit.contain,
-                ),
+              Image.asset(
+                imageUrl,
+                width: 70,
+                height: 90,
+                fit: BoxFit.cover,
               ),
               SizedBox(width: 16),
               Expanded(
