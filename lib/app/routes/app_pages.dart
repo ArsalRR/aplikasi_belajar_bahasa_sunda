@@ -20,6 +20,8 @@ import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/setting_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/tambah_video_guru/bindings/tambah_video_guru_binding.dart';
+import '../modules/tambah_video_guru/views/tambah_video_guru_view.dart';
 import '../modules/tentang_sekolah/bindings/tentang_sekolah_binding.dart';
 import '../modules/tentang_sekolah/views/tentang_sekolah_view.dart';
 
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.SETTING,
       page: () => SettingView(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAMBAH_VIDEO_GURU,
+      page: () => const TambahVideoGuruView(),
+      binding: TambahVideoGuruBinding(),
     ),
   ];
 }
