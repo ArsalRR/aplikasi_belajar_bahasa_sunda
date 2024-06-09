@@ -39,7 +39,6 @@ class HomeView extends GetView<HomeController> {
                               fontWeight: FontWeight.bold,
                             ),
                           )),
-                        
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
@@ -57,56 +56,59 @@ class HomeView extends GetView<HomeController> {
                       right: 20,
                       child: Column(
                         children: [
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: GestureDetector(
-                              onTap: () {
-                                showMenu(
-                                  context: context,
-                                  position: RelativeRect.fromLTRB(
-                                      size.width, kToolbarHeight + 40, 0, 0),
-                                  items: [
-                                    PopupMenuItem<String>(
-                                      value: 'setting',
-                                      child: Text('Setting'),
-                                    ),
-                                    PopupMenuItem<String>(
-                                      value: 'logout',
-                                      child: Text('Keluar'),
-                                    ),
-                                  ],
-                                ).then((value) {
-                                  if (value == 'setting') {
-                                    Get.toNamed('/setting');  
-                                  } else if (value == 'logout') {
-                                    QuickAlert.show(
-                                      context: context,
-                                      type: QuickAlertType.confirm,
-                                      title: 'Konfirmasi',
-                                      text: 'Apakah Anda yakin ingin keluar?',
-                                      confirmBtnText: 'Ya',
-                                      cancelBtnText: 'Tidak',
-                                      onConfirmBtnTap: () {
-                                        controller.logout();
-                                        Get.snackbar(
-                                          'Keluar',
-                                          'Sampai Jumpa Lagi',
-                                          snackPosition: SnackPosition.TOP,
-                                        );
+                          Obx(() {
+                            return MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () {
+                                  showMenu(
+                                    context: context,
+                                    position: RelativeRect.fromLTRB(
+                                        size.width, kToolbarHeight + 40, 0, 0),
+                                    items: [
+                                      PopupMenuItem<String>(
+                                        value: 'setting',
+                                        child: Text('Setting'),
+                                      ),
+                                      PopupMenuItem<String>(
+                                        value: 'logout',
+                                        child: Text('Keluar'),
+                                      ),
+                                    ],
+                                  ).then((value) {
+                                    if (value == 'setting') {
+                                      Get.toNamed('/setting');
+                                    } else if (value == 'logout') {
+                                      QuickAlert.show(
+                                        context: context,
+                                        type: QuickAlertType.confirm,
+                                        title: 'Konfirmasi',
+                                        text: 'Apakah Anda yakin ingin keluar?',
+                                        confirmBtnText: 'Ya',
+                                        cancelBtnText: 'Tidak',
+                                        onConfirmBtnTap: () {
+                                          controller.logout();
+                                          Get.snackbar(
+                                            'Keluar',
+                                            'Sampai Jumpa Lagi',
+                                            snackPosition: SnackPosition.TOP,
+                                          );
 
-                                        Navigator.of(context).pop();
-                                      },
-                                    );
-                                  }
-                                });
-                              },
-                              child: CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/img/gamer.png'),
-                                radius: 20,
+                                          Navigator.of(context).pop();
+                                        },
+                                      );
+                                    }
+                                  });
+                                },
+                                child: CircleAvatar(
+                                  backgroundImage: controller.profileImageUrl.value.isNotEmpty
+                                      ? NetworkImage(controller.profileImageUrl.value)
+                                      : AssetImage('assets/img/gamer.png') as ImageProvider,
+                                  radius: 20,
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          }),
                           SizedBox(height: 10),
                         ],
                       ),

@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:capstone_project/app/widget/MenuWidget.dart';
-import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quickalert/quickalert.dart';
-import '../controllers/home_guru_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
+
+import '../controllers/home_guru_controller.dart';
 
 class HomeGuruView extends GetView<HomeGuruController> {
   const HomeGuruView({Key? key}) : super(key: key);
@@ -69,12 +70,18 @@ class HomeGuruView extends GetView<HomeGuruController> {
                                       size.width, kToolbarHeight + 40, 0, 0),
                                   items: [
                                     PopupMenuItem<String>(
+                                      value: 'setting',
+                                      child: Text('Setting'),
+                                    ),
+                                    PopupMenuItem<String>(
                                       value: 'logout',
                                       child: Text('Keluar'),
                                     ),
                                   ],
                                 ).then((value) {
-                                  if (value == 'logout') {
+                                  if (value == 'setting') {
+                                    Get.toNamed('/setting');
+                                  } else if (value == 'logout') {
                                     QuickAlert.show(
                                       context: context,
                                       type: QuickAlertType.confirm,
@@ -137,12 +144,12 @@ class HomeGuruView extends GetView<HomeGuruController> {
                     MenuWidget(
                       icon_path: "assets/svg/book.svg",
                       title: "Materi",
-                      link: "/setting",
+                      link: "/",
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/creative-writing.svg",
                       title: "Tambah Materi",
-                      link: "/",
+                      link: "/tambah-video-guru",
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/score.svg",

@@ -14,7 +14,11 @@ abstract class Routes {
   static const TENTANG_SEKOLAH = _Paths.TENTANG_SEKOLAH;
   static const SPLASH = _Paths.SPLASH;
   static const SETTING = _Paths.SETTING;
+<<<<<<< HEAD
   static const MATERI_GURU = _Paths.MATERI_GURU;
+=======
+  static const TAMBAH_VIDEO_GURU = _Paths.TAMBAH_VIDEO_GURU;
+>>>>>>> a0647ac15c73f26e81a223cf58a1cbf45df2da64
 }
 
 abstract class _Paths {
@@ -30,5 +34,9 @@ abstract class _Paths {
   static const TENTANG_SEKOLAH = '/tentang-sekolah';
   static const SPLASH = '/splash';
   static const SETTING = '/setting';
+<<<<<<< HEAD
   static const MATERI_GURU = '/materi-guru';
+=======
+  static const TAMBAH_VIDEO_GURU = '/tambah-video-guru';
+>>>>>>> a0647ac15c73f26e81a223cf58a1cbf45df2da64
 }
