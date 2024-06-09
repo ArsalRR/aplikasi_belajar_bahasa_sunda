@@ -10,6 +10,8 @@ import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/materi_guru/bindings/materi_guru_binding.dart';
+import '../modules/materi_guru/views/materi_guru_view.dart';
 import '../modules/quiz/bindings/quiz_binding.dart';
 import '../modules/quiz/views/quiz_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.SETTING,
       page: () => SettingView(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.MATERI_GURU,
+      page: () => const MateriGuruView(),
+      binding: MateriGuruBinding(),
     ),
   ];
 }
