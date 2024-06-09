@@ -91,15 +91,9 @@ class AppPages {
       binding: SettingBinding(),
     ),
     GetPage(
-<<<<<<< HEAD
-      name: _Paths.MATERI_GURU,
-      page: () => const MateriGuruView(),
-      binding: MateriGuruBinding(),
-=======
       name: _Paths.TAMBAH_VIDEO_GURU,
       page: () => const TambahVideoGuruView(),
       binding: TambahVideoGuruBinding(),
->>>>>>> a0647ac15c73f26e81a223cf58a1cbf45df2da64
     ),
   ];
 }

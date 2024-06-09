@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
               title: "Aplikasi LMS SMP Serang Baru",
               initialRoute:
                   snapshot.data != null && snapshot.data!.emailVerified == true
-                      ? Routes.MATERI_GURU
-                      : Routes.MATERI_GURU,
+                      ? Routes.HOME
+                      : Routes.LOGIN,
               getPages: AppPages.routes,
               theme: ThemeData(
                 primarySwatch: Colors.indigo,
