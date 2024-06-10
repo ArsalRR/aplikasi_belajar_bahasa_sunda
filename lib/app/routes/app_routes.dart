@@ -15,6 +15,9 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const SETTING = _Paths.SETTING;
   static const TAMBAH_VIDEO_GURU = _Paths.TAMBAH_VIDEO_GURU;
+  static const ADD_SOAL = _Paths.ADD_SOAL;
+  static const TUGAS_LIST = _Paths.TUGAS_LIST;
+  static const TUGAS_SISWA = _Paths.TUGAS_SISWA;
 }
 
 abstract class _Paths {
@@ -31,4 +34,7 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const SETTING = '/setting';
   static const TAMBAH_VIDEO_GURU = '/tambah-video-guru';
+  static const ADD_SOAL = '/add-soal';
+  static const TUGAS_LIST = '/tugas-list';
+  static const TUGAS_SISWA = '/tugas-siswa';
 }

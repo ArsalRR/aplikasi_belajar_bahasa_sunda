@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add_soal/bindings/add_soal_binding.dart';
+import '../modules/add_soal/views/add_soal_view.dart';
 import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -26,6 +28,10 @@ import '../modules/tambah_video_guru/bindings/tambah_video_guru_binding.dart';
 import '../modules/tambah_video_guru/views/tambah_video_guru_view.dart';
 import '../modules/tentang_sekolah/bindings/tentang_sekolah_binding.dart';
 import '../modules/tentang_sekolah/views/tentang_sekolah_view.dart';
+import '../modules/tugas_list/bindings/tugas_list_binding.dart';
+import '../modules/tugas_list/views/tugas_list_view.dart';
+import '../modules/tugas_siswa/bindings/tugas_siswa_binding.dart';
+import '../modules/tugas_siswa/views/tugas_siswa_view.dart';
 
 part 'app_routes.dart';
 
@@ -94,6 +100,21 @@ class AppPages {
       name: _Paths.TAMBAH_VIDEO_GURU,
       page: () => const TambahVideoGuruView(),
       binding: TambahVideoGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_SOAL,
+      page: () => const AddSoalView(),
+      binding: AddSoalBinding(),
+    ),
+    GetPage(
+      name: _Paths.TUGAS_LIST,
+      page: () => const TugasListView(),
+      binding: TugasListBinding(),
+    ),
+    GetPage(
+      name: _Paths.TUGAS_SISWA,
+      page: () => const TugasSiswaView(),
+      binding: TugasSiswaBinding(),
     ),
   ];
 }

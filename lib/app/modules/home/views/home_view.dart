@@ -32,13 +32,13 @@ class HomeView extends GetView<HomeController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Obx(() => Text(
-                            'Hai, ${controller.fullName.value}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
+                                'Hai, ${controller.fullName.value}',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
@@ -101,9 +101,12 @@ class HomeView extends GetView<HomeController> {
                                   });
                                 },
                                 child: CircleAvatar(
-                                  backgroundImage: controller.profileImageUrl.value.isNotEmpty
-                                      ? NetworkImage(controller.profileImageUrl.value)
-                                      : AssetImage('assets/img/gamer.png') as ImageProvider,
+                                  backgroundImage: controller
+                                          .profileImageUrl.value.isNotEmpty
+                                      ? NetworkImage(
+                                          controller.profileImageUrl.value)
+                                      : AssetImage('assets/img/gamer.png')
+                                          as ImageProvider,
                                   radius: 20,
                                 ),
                               ),
@@ -148,7 +151,7 @@ class HomeView extends GetView<HomeController> {
                     MenuWidget(
                       icon_path: "assets/svg/task.svg",
                       title: "Tugas",
-                      link: "/quiz",
+                      link: "/tugas-list",
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/school.svg",
