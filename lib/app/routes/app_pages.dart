@@ -103,17 +103,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADD_SOAL,
-      page: () => const AddSoalView(),
+      page: () => AddSoalView(),
       binding: AddSoalBinding(),
     ),
     GetPage(
       name: _Paths.TUGAS_LIST,
-      page: () => const TugasListView(),
+      page: () => TugasListView(),
       binding: TugasListBinding(),
     ),
     GetPage(
       name: _Paths.TUGAS_SISWA,
-      page: () => const TugasSiswaView(),
+      page: () => TugasSiswaView(),
       binding: TugasSiswaBinding(),
     ),
   ];
