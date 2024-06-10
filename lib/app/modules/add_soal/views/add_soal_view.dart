@@ -97,8 +97,7 @@ class AddSoalView extends GetView<AddSoalController> {
               return ListTile(
                 title: TextField(
                   decoration: InputDecoration(
-                    labelText:
-                        'Pilihan ${String.fromCharCode(65 + pilihanIndex)}',
+                    labelText: 'Pilihan ${String.fromCharCode(65 + pilihanIndex)}',
                   ),
                   onChanged: (value) {
                     soal.pilihanList[pilihanIndex].text = value;
@@ -114,8 +113,7 @@ class AddSoalView extends GetView<AddSoalController> {
                 ),
                 trailing: IconButton(
                   icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: () =>
-                      controller.removePilihan(index, pilihanIndex),
+                  onPressed: () => controller.removePilihan(index, pilihanIndex),
                 ),
               );
             }),
@@ -124,13 +122,42 @@ class AddSoalView extends GetView<AddSoalController> {
               children: [
                 ElevatedButton.icon(
                   icon: Icon(Icons.add),
-                  label: Text('Tambah Pilihan'),
+                  label: Text('Tambah Pilihan',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+        
+
+                  ),
+                  ),
                   onPressed: () => controller.addPilihan(index),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff008DDA),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                    textStyle: TextStyle(fontSize: 16.0),
+                  ),
                 ),
                 ElevatedButton.icon(
                   icon: Icon(Icons.delete),
-                  label: Text('Hapus Soal'),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  label: Text(
+                    'Hapus Soal',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                  ),
                   onPressed: () => controller.removeSoal(index),
                 ),
               ],
@@ -142,36 +169,60 @@ class AddSoalView extends GetView<AddSoalController> {
   }
 
   Widget _buildAddSoalButton() {
-    return ElevatedButton.icon(
-      icon: Icon(Icons.add),
-      label: Text('Tambah Soal'),
-      onPressed: controller.addSoal,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-        textStyle: TextStyle(fontSize: 16.0),
+    return SizedBox(
+      height: 50,
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xff008DDA),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        onPressed: controller.addSoal,
+        child: Text(
+          'Tambah Soal',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
 
   Widget _buildSaveButton() {
-    return ElevatedButton.icon(
-      icon: Icon(Icons.save),
-      label: Text('Simpan Tugas'),
-      onPressed: () async {
-        showDialog(
-          context: Get.context!,
-          barrierDismissible: false,
-          builder: (context) {
-            return Center(child: CircularProgressIndicator());
-          },
-        );
-        await controller.saveTugas();
-        Navigator.of(Get.context!).pop();
-        _resetForm();
-      },
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-        textStyle: TextStyle(fontSize: 16.0),
+    return SizedBox(
+      height: 50,
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xff008DDA),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        onPressed: () async {
+          showDialog(
+            context: Get.context!,
+            barrierDismissible: false,
+            builder: (context) {
+              return Center(child: CircularProgressIndicator());
+            },
+          );
+          await controller.saveTugas();
+          Navigator.of(Get.context!).pop();
+          _resetForm();
+        },
+        child: Text(
+          'Simpan Tugas',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
