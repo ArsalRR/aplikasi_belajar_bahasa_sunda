@@ -8,14 +8,13 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/home_guru/bindings/home_guru_binding.dart';
 import '../modules/home_guru/views/home_guru_view.dart';
+import '../modules/list_materi_guru/bindings/list_materi_guru_binding.dart';
+import '../modules/list_materi_guru/views/list_materi_guru_view.dart';
 import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/materi_guru/bindings/materi_guru_binding.dart';
-import '../modules/materi_guru/views/materi_guru_view.dart';
-import '../modules/quiz/bindings/quiz_binding.dart';
-import '../modules/quiz/views/quiz_view.dart';
+
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
@@ -72,11 +71,6 @@ class AppPages {
       binding: ListSundaBinding(),
     ),
     GetPage(
-      name: _Paths.QUIZ,
-      page: () => QuizView(),
-      binding: QuizBinding(),
-    ),
-    GetPage(
       name: _Paths.HOME_GURU,
       page: () => HomeGuruView(),
       binding: HomeGuruBinding(),
@@ -115,6 +109,11 @@ class AppPages {
       name: _Paths.TUGAS_SISWA,
       page: () => TugasSiswaView(),
       binding: TugasSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_MATERI_GURU,
+      page: () =>  ListMateriGuruView(),
+      binding: ListMateriGuruBinding(),
     ),
   ];
 }

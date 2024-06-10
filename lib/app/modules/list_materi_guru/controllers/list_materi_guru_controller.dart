@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class MateriGuruController extends GetxController {
-  //TODO: Implement MateriGuruController
+class ListMateriGuruController extends GetxController {
+  //TODO: Implement ListMateriGuruController
 
   final count = 0.obs;
   @override

@@ -9,7 +9,6 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const LIST_SUNDA = _Paths.LIST_SUNDA;
-  static const QUIZ = _Paths.QUIZ;
   static const HOME_GURU = _Paths.HOME_GURU;
   static const TENTANG_SEKOLAH = _Paths.TENTANG_SEKOLAH;
   static const SPLASH = _Paths.SPLASH;
@@ -18,6 +17,7 @@ abstract class Routes {
   static const ADD_SOAL = _Paths.ADD_SOAL;
   static const TUGAS_LIST = _Paths.TUGAS_LIST;
   static const TUGAS_SISWA = _Paths.TUGAS_SISWA;
+  static const LIST_MATERI_GURU = _Paths.LIST_MATERI_GURU;
 }
 
 abstract class _Paths {
@@ -28,7 +28,6 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const RESET_PASSWORD = '/reset-password';
   static const LIST_SUNDA = '/list-sunda';
-  static const QUIZ = '/quiz';
   static const HOME_GURU = '/home-guru';
   static const TENTANG_SEKOLAH = '/tentang-sekolah';
   static const SPLASH = '/splash';
@@ -37,4 +36,5 @@ abstract class _Paths {
   static const ADD_SOAL = '/add-soal';
   static const TUGAS_LIST = '/tugas-list';
   static const TUGAS_SISWA = '/tugas-siswa';
+  static const LIST_MATERI_GURU = '/list-materi-guru';
 }
