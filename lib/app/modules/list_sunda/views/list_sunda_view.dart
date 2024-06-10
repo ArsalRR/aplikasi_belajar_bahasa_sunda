@@ -58,7 +58,9 @@ class ListSundaView extends GetView<ListSundaController> {
                   imageUrl: 'assets/img/videonew.png',
                   title: 'Video Pembelajaran',
                   subtitle: 'Lihat video untuk tingkatkan bahasamu',
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.VIDIO_PEMBELAJARAN);
+                  },
                 ),
               ],
             ),
