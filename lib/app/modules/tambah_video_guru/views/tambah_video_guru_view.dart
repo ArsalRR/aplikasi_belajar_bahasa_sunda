@@ -61,7 +61,7 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20), 
+                SizedBox(height: 20),
                 TextFormField(
                   controller: controller.descController,
                   decoration: InputDecoration(
@@ -100,8 +100,8 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.white,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
