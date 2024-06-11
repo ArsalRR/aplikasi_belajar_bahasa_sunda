@@ -4,13 +4,10 @@ import '../modules/add_soal/bindings/add_soal_binding.dart';
 import '../modules/add_soal/views/add_soal_view.dart';
 import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
-<<<<<<< HEAD;
 import '../modules/datar_nilai/bindings/datar_nilai_binding.dart';
 import '../modules/datar_nilai/views/datar_nilai_view.dart';
-=======
 import '../modules/edit_vidio_guru/bindings/edit_vidio_guru_binding.dart';
 import '../modules/edit_vidio_guru/views/edit_vidio_guru_view.dart';
->>>>>>> cc5a44eec629cc042adfddc83f76b3ff9d11789c
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/home_guru/bindings/home_guru_binding.dart';
@@ -131,12 +128,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_VIDIO_GURU,
-      page: () =>  EditVidioGuruView(),
+      page: () => EditVidioGuruView(),
       binding: EditVidioGuruBinding(),
     ),
     GetPage(
       name: _Paths.VIDIO_PEMBELAJARAN,
-      page: () =>  VidioPembelajaranView(),
+      page: () => VidioPembelajaranView(),
       binding: VidioPembelajaranBinding(),
     ),
   ];

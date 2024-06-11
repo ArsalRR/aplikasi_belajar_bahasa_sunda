@@ -14,16 +14,13 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const SETTING = _Paths.SETTING;
   static const TAMBAH_VIDEO_GURU = _Paths.TAMBAH_VIDEO_GURU;
-<<<<<<< HEAD
   static const DATAR_NILAI = _Paths.DATAR_NILAI;
-=======
   static const ADD_SOAL = _Paths.ADD_SOAL;
   static const TUGAS_LIST = _Paths.TUGAS_LIST;
   static const TUGAS_SISWA = _Paths.TUGAS_SISWA;
   static const LIST_MATERI_GURU = _Paths.LIST_MATERI_GURU;
   static const EDIT_VIDIO_GURU = _Paths.EDIT_VIDIO_GURU;
   static const VIDIO_PEMBELAJARAN = _Paths.VIDIO_PEMBELAJARAN;
->>>>>>> cc5a44eec629cc042adfddc83f76b3ff9d11789c
 }
 
 abstract class _Paths {
@@ -39,14 +36,11 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const SETTING = '/setting';
   static const TAMBAH_VIDEO_GURU = '/tambah-video-guru';
-<<<<<<< HEAD
   static const DATAR_NILAI = '/datar-nilai';
-=======
   static const ADD_SOAL = '/add-soal';
   static const TUGAS_LIST = '/tugas-list';
   static const TUGAS_SISWA = '/tugas-siswa';
   static const LIST_MATERI_GURU = '/list-materi-guru';
   static const EDIT_VIDIO_GURU = '/edit-vidio-guru';
   static const VIDIO_PEMBELAJARAN = '/vidio-pembelajaran';
->>>>>>> cc5a44eec629cc042adfddc83f76b3ff9d11789c
 }
