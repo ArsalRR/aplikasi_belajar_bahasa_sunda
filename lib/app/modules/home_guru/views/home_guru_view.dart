@@ -154,7 +154,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                     MenuWidget(
                       icon_path: "assets/svg/score.svg",
                       title: "Daftar Nilai",
-                      link: "/",
+                      link: "/datar-nilai",
                     ),
                   ],
                 ),

@@ -19,6 +19,7 @@ class _SettingViewState extends State<SettingView> {
   String _userRole = '';
   String _profileImageUrl = '';
   bool _isLoading = false;
+  String _nama = '';
 
   @override
   void initState() {
@@ -42,6 +43,7 @@ class _SettingViewState extends State<SettingView> {
         setState(() {
           _userRole = userData?['role'] ?? 'Unknown Role';
           _profileImageUrl = userData?['profileImageUrl'] ?? '';
+          _nama = userData?['nama'] ?? '';
         });
       } else {
         print('User document does not exist');
@@ -105,7 +107,6 @@ class _SettingViewState extends State<SettingView> {
           _isLoading = false;
         });
 
-      
         QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
@@ -244,6 +245,45 @@ class _SettingViewState extends State<SettingView> {
                     SizedBox(height: 8),
                     Text(
                       userEmail,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Nama                                 ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      _nama,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black87,

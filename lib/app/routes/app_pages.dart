@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
+import '../modules/datar_nilai/bindings/datar_nilai_binding.dart';
+import '../modules/datar_nilai/views/datar_nilai_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/home_guru/bindings/home_guru_binding.dart';
@@ -10,8 +12,7 @@ import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/materi_guru/bindings/materi_guru_binding.dart';
-import '../modules/materi_guru/views/materi_guru_view.dart';
+
 import '../modules/quiz/bindings/quiz_binding.dart';
 import '../modules/quiz/views/quiz_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -94,6 +95,11 @@ class AppPages {
       name: _Paths.TAMBAH_VIDEO_GURU,
       page: () => const TambahVideoGuruView(),
       binding: TambahVideoGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.DATAR_NILAI,
+      page: () => const DatarNilaiView(),
+      binding: DatarNilaiBinding(),
     ),
   ];
 }
