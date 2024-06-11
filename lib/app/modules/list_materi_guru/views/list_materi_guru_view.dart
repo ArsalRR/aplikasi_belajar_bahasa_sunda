@@ -1,14 +1,13 @@
 import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
-import '../controllers/list_sunda_controller.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import '../controllers/list_materi_guru_controller.dart';
 
-class ListSundaView extends GetView<ListSundaController> {
-  const ListSundaView({Key? key}) : super(key: key);
-
+class ListMateriGuruView extends GetView<ListMateriGuruController> {
+  const ListMateriGuruView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -23,7 +22,7 @@ class ListSundaView extends GetView<ListSundaController> {
                 color: Color(0xff008DDA),
                 child: AppBar(
                   title: const Text(
-                    'Materi Bahasa Sunda',
+                    'Materi Video Guru',
                     style: TextStyle(color: Colors.white),
                   ),
                   centerTitle: true,
@@ -46,21 +45,19 @@ class ListSundaView extends GetView<ListSundaController> {
               padding: EdgeInsets.all(17.0),
               children: [
                 buildCard(
-                  imageUrl: 'assets/img/studying.png',
-                  title: 'Materi Bahasa Sunda',
+                  imageUrl: 'assets/img/montage.png',
+                  title: 'Tambah Vidio Guru',
                   subtitle: 'Temukan keterampilan terbaik dirimu',
                   onTap: () {
-                    Get.toNamed(Routes.BHS_SUNDA);
+                    Get.toNamed(Routes.TAMBAH_VIDEO_GURU);
                   },
                 ),
                 SizedBox(height: 21),
                 buildCard(
-                  imageUrl: 'assets/img/videonew.png',
-                  title: 'Video Pembelajaran',
+                  imageUrl: 'assets/img/update.png',
+                  title: 'Edit Materi Vidio',
                   subtitle: 'Lihat video untuk tingkatkan bahasamu',
-                  onTap: () {
-                    Get.toNamed(Routes.VIDIO_PEMBELAJARAN);
-                  },
+                  onTap: () {},
                 ),
               ],
             ),
