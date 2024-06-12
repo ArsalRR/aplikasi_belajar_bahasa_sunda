@@ -4,6 +4,8 @@ import '../modules/add_soal/bindings/add_soal_binding.dart';
 import '../modules/add_soal/views/add_soal_view.dart';
 import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
+import '../modules/daftar_materi_guru/bindings/daftar_materi_guru_binding.dart';
+import '../modules/daftar_materi_guru/views/daftar_materi_guru_view.dart';
 import '../modules/datar_nilai/bindings/datar_nilai_binding.dart';
 import '../modules/datar_nilai/views/datar_nilai_view.dart';
 import '../modules/edit_vidio_guru/bindings/edit_vidio_guru_binding.dart';
@@ -18,7 +20,6 @@ import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reset_password/bindings/reset_password_binding.dart';
@@ -35,6 +36,8 @@ import '../modules/tugas_list/bindings/tugas_list_binding.dart';
 import '../modules/tugas_list/views/tugas_list_view.dart';
 import '../modules/tugas_siswa/bindings/tugas_siswa_binding.dart';
 import '../modules/tugas_siswa/views/tugas_siswa_view.dart';
+import '../modules/update_materi_vidio_guru/bindings/update_materi_vidio_guru_binding.dart';
+import '../modules/update_materi_vidio_guru/views/update_materi_vidio_guru_view.dart';
 import '../modules/vidio_pembelajaran/bindings/vidio_pembelajaran_binding.dart';
 import '../modules/vidio_pembelajaran/views/vidio_pembelajaran_view.dart';
 
@@ -135,6 +138,16 @@ class AppPages {
       name: _Paths.VIDIO_PEMBELAJARAN,
       page: () => VidioPembelajaranView(),
       binding: VidioPembelajaranBinding(),
+    ),
+    GetPage(
+      name: _Paths.DAFTAR_MATERI_GURU,
+      page: () => const DaftarMateriGuruView(),
+      binding: DaftarMateriGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_MATERI_VIDIO_GURU,
+      page: () => const UpdateMateriVidioGuruView(),
+      binding: UpdateMateriVidioGuruBinding(),
     ),
   ];
 }

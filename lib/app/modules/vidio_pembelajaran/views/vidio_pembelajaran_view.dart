@@ -89,7 +89,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              data['link'] ?? 'No Link',
+                              data['link'] ?? 'Tidak Ada link',
                               style: TextStyle(fontSize: 16, color: Colors.blue),
                             ),
                           ],

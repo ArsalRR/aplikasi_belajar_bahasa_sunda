@@ -57,7 +57,9 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
                   imageUrl: 'assets/img/update.png',
                   title: 'Edit Materi Vidio',
                   subtitle: 'Lihat video untuk tingkatkan bahasamu',
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.DAFTAR_MATERI_GURU);
+                  },
                 ),
               ],
             ),

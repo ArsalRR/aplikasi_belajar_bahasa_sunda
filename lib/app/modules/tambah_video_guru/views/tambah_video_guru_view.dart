@@ -65,7 +65,7 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
                 TextFormField(
                   controller: controller.descController,
                   decoration: InputDecoration(
-                    labelText: 'Desc Barang',
+                    labelText: 'Desc  Materi Pembelajaran',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
