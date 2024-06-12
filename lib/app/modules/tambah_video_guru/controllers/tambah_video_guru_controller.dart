@@ -8,6 +8,7 @@ class TambahVideoGuruController extends GetxController {
   late TextEditingController descController;
   late TextEditingController linkytController;
 
+
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
@@ -43,7 +44,7 @@ class TambahVideoGuruController extends GetxController {
         context: Get.context!,
         type: QuickAlertType.success,
         title: 'Berhasil',
-        text: 'Data Behasil Disimpan',
+        text: 'Data Berhasil Disimpan',
       );
     } catch (e) {
       print(e);

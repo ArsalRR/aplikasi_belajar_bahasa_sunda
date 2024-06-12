@@ -41,7 +41,7 @@ class DaftarMateriGuruView extends GetView<DaftarMateriGuruController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 100.0),
+            padding: const EdgeInsets.only(top: 150.0),
             child: StreamBuilder<QuerySnapshot>(
               stream: controller.streamData(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -90,14 +90,14 @@ class DaftarMateriGuruView extends GetView<DaftarMateriGuruController> {
                               children: [
                                 SizedBox(height: 5),
                                 Text(
-                                  'Desc Materi: ${data['desc'] ?? ''}',
+                                  'Link Youtube: ${data['link'] ?? ''}',
                                   style: TextStyle(
                                     color: Colors.white70,
                                   ),
                                 ),
                                 SizedBox(height: 5),
                                 Text(
-                                  'Link Youtube: ${data['link'] ?? ''}',
+                                  'Desc Materi: ${data['desc'] ?? ''}',
                                   style: TextStyle(
                                     color: Colors.white70,
                                   ),
@@ -109,7 +109,7 @@ class DaftarMateriGuruView extends GetView<DaftarMateriGuruController> {
                               children: [
                                 IconButton(
                                   onPressed: () => Get.toNamed(
-                                    Routes.UPDATE_MATERI_VIDIO_GURU,
+                                    Routes.EDIT_VIDIO_GURU,
                                     arguments: document.id,
                                   ),
                                   icon: Icon(Icons.edit, color: Colors.white),

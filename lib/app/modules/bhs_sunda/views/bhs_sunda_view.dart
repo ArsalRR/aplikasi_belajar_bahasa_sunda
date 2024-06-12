@@ -42,7 +42,7 @@ class BhsSundaView extends GetView<BhsSundaController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 120.0),
+            padding: const EdgeInsets.only(top: 150.0), 
             child: Obx(() {
               if (controller.isLoading.value && !controller.isDialogShowing.value) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -68,44 +68,59 @@ class BhsSundaView extends GetView<BhsSundaController> {
               }
 
               return ListView.builder(
+                padding: const EdgeInsets.only(top: 20),
                 itemCount: controller.sunda.length,
                 itemBuilder: (context, index) {
                   final word = controller.sunda[index];
-            return Card(
-  margin: const EdgeInsets.all(10),
-  child: Padding(
-    padding: const EdgeInsets.all(10),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Sorangan: ${word['sorangan']}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 10),
-              Text('Batur: ${word['batur']}', style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
-              Text('Loma: ${word['loma']}', style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
-              Text('Bahasa Indonesia: ${word['bindo']}', style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
-              Text('Bahasa Inggris: ${word['english']}', style: const TextStyle(fontSize: 16)),
-            ],
-          ),
-        ),
-        const SizedBox(width: 10),
-        Image.asset(
-          'assets/img/sunda.png',
-          width: 50, 
-          height: 50,
-          fit: BoxFit.cover,
-        ),
-      ],
-    ),
-  ),
-);
-
+                  return Card(
+                    margin: const EdgeInsets.all(10),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Sorangan: ${word['sorangan']}',
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Batur: ${word['batur']}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Loma: ${word['loma']}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Bahasa Indonesia: ${word['bindo']}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Bahasa Inggris: ${word['english']}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Image.asset(
+                            'assets/img/sunda.png',
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
               );
             }),

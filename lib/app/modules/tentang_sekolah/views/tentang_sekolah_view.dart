@@ -13,7 +13,7 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(150.0),
+        preferredSize: Size.fromHeight(170.0),
         child: ClipPath(
           clipper: WaveClipperOne(),
           child: AppBar(

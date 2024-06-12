@@ -39,7 +39,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 140.0),
+            padding: const EdgeInsets.only(top: 150.0),
             child: StreamBuilder<QuerySnapshot>(
               stream: controller.streamData(),
               builder: (context, snapshot) {
