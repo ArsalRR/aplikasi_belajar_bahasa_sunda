@@ -61,47 +61,65 @@ class DaftarMateriGuruView extends GetView<DaftarMateriGuruController> {
                       var document = snapshot.data!.docs[index];
                       var data = document.data() as Map<String, dynamic>;
 
-                      return Card(
-                        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        elevation: 3.0,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      data['judul'] ?? 'No Title',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text('Desc Materi: ${data['desc'] ?? ''}'),
-                                    SizedBox(height: 5),
-                                    Text('Link Youtube: ${data['link'] ?? ''}'),
-                                  ],
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () => Get.toNamed(
-                                  Routes.UPDATE_MATERI_VIDIO_GURU,
-                                  arguments: document.id,
-                                ),
-                                icon: Icon(Icons.edit),
-                              ),
-                              IconButton(
-                                onPressed: () => controller.deleteData(document.id),
-                                icon: Icon(Icons.delete),
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: index % 2 == 0 ? Color(0xffFF4081) : Color(0xff303F9F),
+                            borderRadius: BorderRadius.circular(15.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 4.0,
+                                offset: Offset(0, 4),
                               ),
                             ],
+                          ),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.all(16.0),
+                            title: Text(
+                              data['judul'] ?? 'No Title',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Desc Materi: ${data['desc'] ?? ''}',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Link Youtube: ${data['link'] ?? ''}',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () => Get.toNamed(
+                                    Routes.UPDATE_MATERI_VIDIO_GURU,
+                                    arguments: document.id,
+                                  ),
+                                  icon: Icon(Icons.edit, color: Colors.white),
+                                ),
+                                IconButton(
+                                  onPressed: () => controller.deleteData(document.id),
+                                  icon: Icon(Icons.delete, color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

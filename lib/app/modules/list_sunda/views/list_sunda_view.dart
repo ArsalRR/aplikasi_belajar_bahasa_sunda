@@ -39,7 +39,6 @@ class ListSundaView extends GetView<ListSundaController> {
               ),
             ),
           ),
-          // Body content
           Padding(
             padding: const EdgeInsets.only(top: 120.0),
             child: ListView(

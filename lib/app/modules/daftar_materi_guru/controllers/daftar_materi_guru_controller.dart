@@ -16,17 +16,17 @@ class DaftarMateriGuruController extends GetxController {
         context: Get.context!,
         type: QuickAlertType.confirm,
         title: 'Yakin Hapus',
-        text: 'Apakah Kamu yakin akan Hapus Profil ini?',
-        confirmBtnText: 'Yes, I\'m sure',
-        cancelBtnText: 'No',
+        text: 'Apakah Kamu yakin akan Hapus Materi Ini ini?',
+        confirmBtnText: 'Ya',
+        cancelBtnText: 'Tidak',
         onConfirmBtnTap: () async {
           await firestore.collection('materi_vidio').doc(docID).delete();
           Get.back();
           QuickAlert.show(
             context: Get.context!,
             type: QuickAlertType.success,
-            title: 'Success',
-            text: 'Data deleted successfully',
+            title: 'Berhasil',
+            text: 'Data Berhasil Di hapus',
             confirmBtnText: 'OK',
           );
         },
@@ -37,7 +37,7 @@ class DaftarMateriGuruController extends GetxController {
         context: Get.context!,
         type: QuickAlertType.error,
         title: 'Error',
-        text: 'Cannot delete this post',
+        text: 'tidak Bisa Di hapus',
         confirmBtnText: 'OK',
       );
     }
