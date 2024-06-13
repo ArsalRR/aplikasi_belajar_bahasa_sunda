@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:quickalert/quickalert.dart';
 
 class SettingView extends StatefulWidget {
@@ -18,8 +17,9 @@ class _SettingViewState extends State<SettingView> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   String _userRole = '';
   String _profileImageUrl = '';
+  String _userName = '';
   bool _isLoading = false;
-  String _nama = '';
+  TextEditingController _nameController = TextEditingController();
 
   @override
   void initState() {
@@ -43,7 +43,8 @@ class _SettingViewState extends State<SettingView> {
         setState(() {
           _userRole = userData?['role'] ?? 'Unknown Role';
           _profileImageUrl = userData?['profileImageUrl'] ?? '';
-          _nama = userData?['nama'] ?? '';
+          _userName = userData?['nama'] ?? 'No Name';
+          _nameController.text = _userName;
         });
       } else {
         print('User document does not exist');
@@ -148,190 +149,195 @@ class _SettingViewState extends State<SettingView> {
     );
   }
 
+  void _saveName() async {
+    if (user == null) {
+      print('user tidak terdaftar');
+      return;
+    }
+
+    String newName = _nameController.text.trim();
+    if (newName.isEmpty) {
+      Get.snackbar(
+        'Error',
+        'Nama tidak boleh kosong',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.TOP,
+        duration: Duration(seconds: 3),
+        margin: EdgeInsets.all(12),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await firestore.collection('users').doc(user!.uid).update({
+        'nama': newName,
+      });
+
+      setState(() {
+        _userName = newName;
+        _isLoading = false;
+      });
+
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.success,
+        title: 'Berhasil',
+        text: 'Nama telah diperbarui',
+        confirmBtnText: 'OK',
+      );
+    } catch (e) {
+      print('Error updating name: $e');
+      setState(() {
+        _isLoading = false;
+      });
+
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: 'Gagal',
+        text: 'Gagal update Nama. Coba Lagi.',
+        confirmBtnText: 'OK',
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final String userEmail = user?.email ?? 'User';
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color(0xff008DDA),
+        title: Text('Pengaturan', style: TextStyle(fontFamily: 'Poppins')),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Get.back(),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ClipPath(
-                clipper: OvalBottomBorderClipper(),
-                child: Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-                  color: Color(0xff008DDA),
-                  child: Column(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: _showImageOptions,
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: IconButton(
-                          icon: Icon(Icons.arrow_back, color: Colors.white),
-                          onPressed: () => Get.back(),
-                        ),
+                      CircleAvatar(
+                        radius: 90,
+                        backgroundColor: Colors.grey[200],
+                        backgroundImage: _profileImageUrl.isNotEmpty
+                            ? NetworkImage(_profileImageUrl)
+                            : AssetImage('assets/img/gamer.png')
+                                as ImageProvider,
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Pengaturan',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 40),
-                      Center(
-                        child: GestureDetector(
-                          onTap: _showImageOptions,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 90,
-                                backgroundColor: Colors.grey[200],
-                                backgroundImage: _profileImageUrl.isNotEmpty
-                                    ? NetworkImage(_profileImageUrl)
-                                    : AssetImage('assets/img/gamer.png')
-                                        as ImageProvider,
-                              ),
-                              if (_isLoading)
-                                CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.blue,
-                                  ),
-                                ),
-                            ],
+                      if (_isLoading)
+                        CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.blue,
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 50),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.grey),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
+                SizedBox(height: 20),
+                Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Email',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          userEmail,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        Divider(color: Colors.grey[300], height: 32),
+                        Text(
+                          'Role',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          _userRole,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        Divider(color: Colors.grey[300], height: 32),
+                        Text(
+                          'Nama',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          controller: _nameController,
+                          decoration: InputDecoration(
+                            hintText: 'Masukkan nama Anda',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: _saveName,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color(0xff008DDA),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      userEmail,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                      ),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 80),
+                  ),
+                  child: Text(
+                    'Simpan',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.grey),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Nama                                 ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      _nama,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.grey),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Role                                 ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      _userRole,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+                SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),
