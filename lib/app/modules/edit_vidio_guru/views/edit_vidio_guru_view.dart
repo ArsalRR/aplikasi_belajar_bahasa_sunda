@@ -10,13 +10,12 @@ class EditVidioGuruView extends GetView<EditVidioGuruController> {
 
   @override
   Widget build(BuildContext context) {
-    // ValueNotifier to keep track of the button's enabled/disabled state
+ 
     final ValueNotifier<bool> isButtonEnabled = ValueNotifier<bool>(false);
 
-    // Function to check if fields have changed
     void validateFields(String initialJudul, String initialLink, String initialDesc) {
       isButtonEnabled.value = controller.judulController.text != initialJudul ||
-                              controller.linkytController.text != initialLink ||
+                              controller.linkController.text != initialLink ||
                               controller.descController.text != initialDesc;
     }
 
@@ -51,10 +50,10 @@ class EditVidioGuruView extends GetView<EditVidioGuruController> {
               var initialDesc = data['desc'];
 
               controller.judulController.text = initialJudul;
-              controller.linkytController.text = initialLink;
+              controller.linkController.text = initialLink;
               controller.descController.text = initialDesc;
               controller.judulController.addListener(() => validateFields(initialJudul, initialLink, initialDesc));
-              controller.linkytController.addListener(() => validateFields(initialJudul, initialLink, initialDesc));
+              controller.linkController.addListener(() => validateFields(initialJudul, initialLink, initialDesc));
               controller.descController.addListener(() => validateFields(initialJudul, initialLink, initialDesc));
 
               return ListView(
@@ -79,7 +78,7 @@ class EditVidioGuruView extends GetView<EditVidioGuruController> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    controller: controller.linkytController,
+                    controller: controller.linkController,
                     decoration: InputDecoration(
                       labelText: 'Link Youtube video',
                       hintText: 'Masukkan Link Youtube video',
@@ -131,7 +130,7 @@ class EditVidioGuruView extends GetView<EditVidioGuruController> {
                                 controller.updateData(
                                   Get.arguments,
                                   controller.judulController.text,
-                                  controller.linkytController.text,
+                                  controller.linkController.text,
                                   controller.descController.text,
                                 );
                               }
