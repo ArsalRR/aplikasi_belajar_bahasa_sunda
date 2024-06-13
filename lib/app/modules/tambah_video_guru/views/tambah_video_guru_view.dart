@@ -22,7 +22,7 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(170.0),
+        preferredSize: Size.fromHeight(160.0),
         child: ClipPath(
           clipper: WaveClipperOne(),
           child: AppBar(
@@ -118,7 +118,7 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
                             controller.descController.text,
                           );
                         }
-                      : null, // Disable button when fields are empty
+                      : null, 
                   child: Text(
                     'Simpan',
                     style: TextStyle(
