@@ -21,6 +21,7 @@ dependencies:
   intl:
   http: ^1.2.0
   quickalert: ^1.1.0
+  web: ^0.5.1
 
   flutter_launcher_icons: ^0.13.1
   url_launcher: ^6.1.5
