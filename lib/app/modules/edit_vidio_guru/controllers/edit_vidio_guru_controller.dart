@@ -16,6 +16,13 @@ class EditVidioGuruController extends GetxController {
   }
 
   void updateData(String docID, String judul, String link, String desc) async {
+      QuickAlert.show(
+      context: Get.context!,
+      type: QuickAlertType.loading,
+      title: 'Loading',
+      text: 'Menyimpan data...',
+    );
+
     try {
       await firestore.collection('materi_vidio').doc(docID).update({
         'judul': judul,
@@ -25,6 +32,7 @@ class EditVidioGuruController extends GetxController {
       });
 
      Get.back();
+     await Future.delayed(Duration(seconds: 2));
       QuickAlert.show(
         context: Get.context!,
         type: QuickAlertType.success,

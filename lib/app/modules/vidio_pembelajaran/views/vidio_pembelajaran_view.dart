@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import '../controllers/vidio_pembelajaran_controller.dart';
+import 'package:quickalert/quickalert.dart';
 
 class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
   @override
@@ -61,95 +62,99 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                   itemBuilder: (context, index) {
                     var doc = snapshot.data!.docs[index];
                     var data = doc.data() as Map<String, dynamic>;
+                    bool isBlueCard = index % 2 == 0;
 
-                    return GestureDetector(
-                      onTap: () async {
-                        var url = data['link'] ?? '';
-                        if (url.isNotEmpty) {
-                          final uri = Uri.parse(url);
-                          if (await canLaunchUrl(uri)) {
-                            await launchUrl(uri);
-                          } else {
-                            Get.snackbar(
-                              'Error',
-                              'Could not launch $url',
-                              snackPosition: SnackPosition.BOTTOM,
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(12),
-                            );
-                          }
-                        }
-                      },
-                      child: Card(
-                        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                        elevation: 3.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: index % 2 == 0 ? Color(0xffFF4081) : Color(0xff303F9F),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.video_library,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(width: 10),
-                                    Expanded(
-                                      child: Text(
-                                        data['judul'] ?? 'No Title',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  data['desc'] ?? 'No Description',
-                                  style: TextStyle(fontSize: 16, color: Colors.white70),
-                                ),
-                                SizedBox(height: 10),
-                                GestureDetector(
-                                  onTap: () async {
-                                    var url = data['link'] ?? '';
-                                    if (url.isNotEmpty) {
-                                      final uri = Uri.parse(url);
-                                      if (await canLaunchUrl(uri)) {
-                                        await launchUrl(uri);
-                                      } else {
-                                        Get.snackbar(
-                                          'Error',
-                                          'Could not launch $url',
-                                          snackPosition: SnackPosition.BOTTOM,
-                                          duration: Duration(seconds: 2),
-                                          margin: EdgeInsets.all(12),
-                                        );
-                                      }
-                                    }
-                                  },
-                                  child: Text(
-                                    data['link'] ?? 'Tidak Ada link',
-                                    style: TextStyle(fontSize: 16, color: Colors.blue[200]),
-                                  ),
-                                ),
-                              ],
-                            ),
+                return GestureDetector(
+  onTap: () async {
+    var url = data['link'] ?? '';
+    if (url.isNotEmpty) {
+      final uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
+      } else {
+        QuickAlert.show(
+          context: Get.context!,
+          type: QuickAlertType.error,
+          title: 'Gagal',
+          text: 'Link tidak dapat diakses: $url',
+        );
+      }
+    } else {
+      QuickAlert.show(
+        context: Get.context!,
+        type: QuickAlertType.warning,
+        title: 'Perhatian',
+        text: 'Link tidak tersedia untuk video ini.',
+      );
+    }
+  },
+  child: Card(
+    margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+    elevation: 3.0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    child: Container(
+      decoration: BoxDecoration(
+        color: isBlueCard ? Color(0xff008DDA) : Colors.white,
+        borderRadius: BorderRadius.circular(15.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4.0,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          data['judul'] ?? 'No Title',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: isBlueCard ? Colors.white : Colors.black,
+                            fontFamily: 'Poppins',
                           ),
                         ),
                       ),
-                    );
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    data['desc'] ?? 'No Description',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: isBlueCard ? Colors.white70 : Colors.black54,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.play_circle_fill,
+              color: isBlueCard ? Colors.white : Colors.blue,
+              size: 40,
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+);
+
                   },
                 );
               },
