@@ -27,6 +27,13 @@ class TambahVideoGuruController extends GetxController {
   }
 
   void addData(String judul, String link, String desc) async {
+    QuickAlert.show(
+      context: Get.context!,
+      type: QuickAlertType.loading,
+      title: 'Loading',
+      text: 'Menyimpan data...',
+    );
+
     try {
       await firestore.collection('materi_vidio').add({
         'judul': judul,
@@ -37,16 +44,22 @@ class TambahVideoGuruController extends GetxController {
       judulController.clear();
       descController.clear();
       linkytController.clear();
-
       Get.back();
       QuickAlert.show(
         context: Get.context!,
         type: QuickAlertType.success,
         title: 'Berhasil',
-        text: 'Data Behasil Disimpan',
+        text: 'Data Berhasil Disimpan',
       );
+      await Future.delayed(Duration(seconds: 2));
+      Get.back();
     } catch (e) {
       print(e);
+
+    
+      Get.back();
+
+    
       QuickAlert.show(
         context: Get.context!,
         type: QuickAlertType.error,

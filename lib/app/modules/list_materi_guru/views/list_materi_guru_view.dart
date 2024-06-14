@@ -40,7 +40,7 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
           ),
           // Body content
           Padding(
-            padding: const EdgeInsets.only(top: 120.0),
+            padding: const EdgeInsets.only(top: 160.0),
             child: ListView(
               padding: EdgeInsets.all(17.0),
               children: [
@@ -55,7 +55,7 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
                 SizedBox(height: 21),
                 buildCard(
                   imageUrl: 'assets/img/update.png',
-                  title: 'Edit Materi Vidio',
+                  title: 'List Materi Vidio',
                   subtitle: 'Lihat video untuk tingkatkan bahasamu',
                   onTap: () {
                     Get.toNamed(Routes.DAFTAR_MATERI_GURU);
