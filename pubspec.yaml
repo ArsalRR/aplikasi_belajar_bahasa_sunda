@@ -21,12 +21,6 @@ dependencies:
   intl:
   http: ^1.2.0
   quickalert: ^1.1.0
-<<<<<<< HEAD
-  web: ^0.5.1
-
-=======
->>>>>>> d48389527154f1adba584b3622091a4eb62e4bf1
-  flutter_launcher_icons: ^0.13.1
   url_launcher: ^6.1.5
 
 dev_dependencies:

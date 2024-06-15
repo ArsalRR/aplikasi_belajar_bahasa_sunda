@@ -20,11 +20,19 @@ class _SettingViewState extends State<SettingView> {
   String _userName = '';
   bool _isLoading = false;
   TextEditingController _nameController = TextEditingController();
+  bool _isButtonEnabled = false;
 
   @override
   void initState() {
     super.initState();
     _fetchUserData();
+    _nameController.addListener(_onNameChanged);
+  }
+
+  void _onNameChanged() {
+    setState(() {
+      _isButtonEnabled = _nameController.text.trim() != _userName;
+    });
   }
 
   void _fetchUserData() async {
@@ -45,6 +53,7 @@ class _SettingViewState extends State<SettingView> {
           _profileImageUrl = userData?['profileImageUrl'] ?? '';
           _userName = userData?['nama'] ?? 'No Name';
           _nameController.text = _userName;
+          _isButtonEnabled = false;
         });
       } else {
         print('User document does not exist');
@@ -181,6 +190,7 @@ class _SettingViewState extends State<SettingView> {
       setState(() {
         _userName = newName;
         _isLoading = false;
+        _isButtonEnabled = false; 
       });
 
       QuickAlert.show(
@@ -254,10 +264,17 @@ class _SettingViewState extends State<SettingView> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4.0,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
@@ -321,21 +338,26 @@ class _SettingViewState extends State<SettingView> {
                   ),
                 ),
                 SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: _saveName,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Color(0xff008DDA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _isButtonEnabled ? _saveName : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _isButtonEnabled
+                          ? const Color(0xff008DDA)
+                          : Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 80),
-                  ),
-                  child: Text(
-                    'Simpan',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
+                    child: Text(
+                      'Simpan',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

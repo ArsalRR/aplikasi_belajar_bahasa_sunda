@@ -62,6 +62,7 @@ class LoginView extends GetView<LoginController> {
                               color: Colors.black,
                             ),
                             onPressed: () {
+                              
                               controller.isPasswordHidden.value =
                                   !controller.isPasswordHidden.value;
                             },
