@@ -142,8 +142,8 @@ class HomeGuruView extends GetView<HomeGuruController> {
                   primary: false,
                   children: [
                     MenuWidget(
-                      icon_path: "assets/svg/book.svg",
-                      title: "Tambah Materi",
+                      icon_path: "assets/svg/play.svg",
+                      title: "Tambah Vidio",
                       link: "/list-materi-guru",
                     ),
                     MenuWidget(

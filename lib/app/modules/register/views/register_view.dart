@@ -149,7 +149,7 @@ class RegisterView extends GetView<RegisterController> {
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                         prefixIcon: Icon(Icons.work),
-                        labelText: 'Select Role',
+                        labelText: 'Pilih  Role',
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontFamily: 'Poppins',

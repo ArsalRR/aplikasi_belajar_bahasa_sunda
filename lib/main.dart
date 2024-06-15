@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 import 'app/utils/loading.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +19,15 @@ void main() async {
           messagingSenderId: "790355774790",
           projectId: "my-project-f34c5",
           storageBucket: "my-project-f34c5.appspot.com"));
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
   runApp(MyApp());
 }
@@ -31,10 +44,10 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Aplikasi LMS SMP Serang Baru",
-              initialRoute:
-                  snapshot.data != null && snapshot.data!.emailVerified == true
-                      ? Routes.HOME
-                      : Routes.LOGIN,
+              initialRoute: snapshot.data != null &&
+                      snapshot.data!.emailVerified == true
+                  ? Routes.HOME
+                  : Routes.LOGIN,
               getPages: AppPages.routes,
               theme: ThemeData(
                 primarySwatch: Colors.indigo,
