@@ -1,10 +1,10 @@
+import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:capstone_project/app/widget/MenuWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import '../controllers/home_controller.dart';
@@ -165,7 +165,6 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-           
               const SizedBox(height: 20),
               Container(
                 transform: Matrix4.translationValues(0.0, -80.0, 0.0),
@@ -204,9 +203,7 @@ class HomeView extends GetView<HomeController> {
                         autoPlay: true,
                         enlargeCenterPage: true,
                         aspectRatio: 2.0,
-                        onPageChanged: (index, reason) {
-                         
-                        },
+                        onPageChanged: (index, reason) {},
                       ),
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index, realIndex) {
@@ -216,27 +213,20 @@ class HomeView extends GetView<HomeController> {
 
                         return GestureDetector(
                           onTap: () async {
-                            var url = data['link'] ?? '';
-                            if (url.isNotEmpty) {
-                              final uri = Uri.parse(url);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(uri);
-                              } else {
-                                QuickAlert.show(
-                                  context: Get.context!,
-                                  type: QuickAlertType.error,
-                                  title: 'Gagal',
-                                  text: 'Link tidak dapat diakses: $url',
-                                );
-                              }
-                            } else {
-                              QuickAlert.show(
-                                context: Get.context!,
-                                type: QuickAlertType.warning,
-                                title: 'Perhatian',
-                                text: 'Link tidak tersedia untuk video ini.',
-                              );
-                            }
+                            QuickAlert.show(
+                              context: context,
+                              type: QuickAlertType.loading,
+                              title: 'Tuggu',
+                              text: 'Sedang Menampilkan Vidio Pembelajaran',
+                              barrierDismissible: false,
+                            );
+
+                          
+                            await Future.delayed(Duration(seconds: 2));
+
+                            Navigator.of(context).pop();
+
+                            Get.toNamed(Routes.VIDIO_PEMBELAJARAN);
                           },
                           child: Card(
                             margin: const EdgeInsets.symmetric(
@@ -263,7 +253,8 @@ class HomeView extends GetView<HomeController> {
                                 padding: const EdgeInsets.all(16.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       data['judul'] ?? 'No Title',

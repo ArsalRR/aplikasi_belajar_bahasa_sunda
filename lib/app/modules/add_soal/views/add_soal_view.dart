@@ -8,7 +8,16 @@ class AddSoalView extends GetView<AddSoalController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tambah Soal'),
+        backgroundColor: Color(0xff008DDA),
+        title: Text('Tambah Soal Siswa',
+            style: TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.white,
+                fontWeight: FontWeight.bold)),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Get.back(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -26,8 +35,8 @@ class AddSoalView extends GetView<AddSoalController> {
                 controller: controller.deskripsiController,
                 icon: Icons.description,
               ),
-              SizedBox(height: 20.0),
-              Text(
+              const SizedBox(height: 20.0),
+              const Text(
                 'Daftar Soal',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -37,7 +46,7 @@ class AddSoalView extends GetView<AddSoalController> {
               Obx(
                 () => ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.soalList.length,
                   itemBuilder: (context, index) {
                     final soal = controller.soalList[index];
@@ -45,9 +54,9 @@ class AddSoalView extends GetView<AddSoalController> {
                   },
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               _buildAddSoalButton(),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               _buildSaveButton(),
             ],
           ),
@@ -78,7 +87,7 @@ class AddSoalView extends GetView<AddSoalController> {
 
   Widget _buildSoalItem(Soal soal, int index) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -92,7 +101,7 @@ class AddSoalView extends GetView<AddSoalController> {
                 soal.soalText = value;
               },
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             ...List.generate(soal.pilihanList.length, (pilihanIndex) {
               return ListTile(
                 title: TextField(
@@ -112,7 +121,7 @@ class AddSoalView extends GetView<AddSoalController> {
                   },
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
+                  icon: const Icon(Icons.delete, color: Colors.red),
                   onPressed: () => controller.removePilihan(index, pilihanIndex),
                 ),
               );
@@ -120,44 +129,12 @@ class AddSoalView extends GetView<AddSoalController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
-                  icon: Icon(Icons.add),
-                  label: Text('Tambah Pilihan',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-        
-
-                  ),
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.add, color: Color(0xff008DDA)),
                   onPressed: () => controller.addPilihan(index),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff008DDA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-                    textStyle: TextStyle(fontSize: 16.0),
-                  ),
                 ),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.delete),
-                  label: Text(
-                    'Hapus Soal',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
                   onPressed: () => controller.removeSoal(index),
                 ),
               ],
@@ -172,7 +149,7 @@ class AddSoalView extends GetView<AddSoalController> {
     return SizedBox(
       height: 50,
       width: double.infinity,
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xff008DDA),
           shape: RoundedRectangleBorder(
@@ -180,7 +157,8 @@ class AddSoalView extends GetView<AddSoalController> {
           ),
         ),
         onPressed: controller.addSoal,
-        child: Text(
+        icon: const Icon(Icons.add, color: Colors.white),
+        label: const Text(
           'Tambah Soal',
           style: TextStyle(
             fontSize: 18,
@@ -208,14 +186,14 @@ class AddSoalView extends GetView<AddSoalController> {
             context: Get.context!,
             barrierDismissible: false,
             builder: (context) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             },
           );
           await controller.saveTugas();
           Navigator.of(Get.context!).pop();
           _resetForm();
         },
-        child: Text(
+        child: const Text(
           'Simpan Tugas',
           style: TextStyle(
             fontSize: 18,

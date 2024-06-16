@@ -24,7 +24,10 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                 child: AppBar(
                   title: const Text(
                     'Vidio Materi Bahasa Sunda',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -52,7 +55,10 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                   return Center(
                     child: Text(
                       'Tidak ada video pembelajaran yang tersedia.',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
                   );
                 }

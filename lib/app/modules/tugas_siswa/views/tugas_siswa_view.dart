@@ -44,7 +44,7 @@ class _TugasSiswaViewState extends State<TugasSiswaView> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 120.0),
+            padding: const EdgeInsets.only(top: 160.0),
             child: Obx(() {
               if (controller.isLoading.value) {
                 return Center(child: CircularProgressIndicator());
