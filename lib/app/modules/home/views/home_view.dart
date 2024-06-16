@@ -1,9 +1,12 @@
 import 'package:capstone_project/app/widget/MenuWidget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
-import '../controllers/home_controller.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -164,6 +167,118 @@ class HomeView extends GetView<HomeController> {
               Container(
                 transform: Matrix4.translationValues(0.0, -60.0, 0.0),
                 child: Text("Berbasu SMP Serang Baru"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0),
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: controller.streamData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+
+                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'Tidak ada video pembelajaran yang tersedia.',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      );
+                    }
+
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        var doc = snapshot.data!.docs[index];
+                        var data = doc.data() as Map<String, dynamic>;
+                        bool isBlueCard = index % 2 == 0;
+
+                        return GestureDetector(
+                          onTap: () async {
+                            var url = data['link'] ?? '';
+                            if (url.isNotEmpty) {
+                              final uri = Uri.parse(url);
+                              if (await canLaunchUrl(uri)) {
+                                await launchUrl(uri);
+                              } else {
+                                QuickAlert.show(
+                                  context: Get.context!,
+                                  type: QuickAlertType.error,
+                                  title: 'Gagal',
+                                  text: 'Link tidak dapat diakses: $url',
+                                );
+                              }
+                            } else {
+                              QuickAlert.show(
+                                context: Get.context!,
+                                type: QuickAlertType.warning,
+                                title: 'Perhatian',
+                                text: 'Link tidak tersedia untuk video ini.',
+                              );
+                            }
+                          },
+                          child: Card(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16.0),
+                            elevation: 3.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: isBlueCard
+                                    ? Color(0xff008DDA)
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(15.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 4.0,
+                                    offset: Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data['judul'] ?? 'No Title',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: isBlueCard
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontFamily: 'Poppins',
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Icon(
+                                          Icons.play_circle_fill,
+                                          color: isBlueCard
+                                              ? Colors.white
+                                              : Color(0xff008DDA),
+                                          size: 40,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

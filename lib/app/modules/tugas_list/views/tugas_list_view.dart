@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
+
 import '../controllers/tugas_list_controller.dart';
 
 class TugasListView extends GetView<TugasListController> {
@@ -36,7 +37,6 @@ class TugasListView extends GetView<TugasListController> {
               ),
             ),
           ),
-          // Body content
           Padding(
             padding: const EdgeInsets.only(top: 160.0),
             child: Obx(() {
@@ -71,7 +71,8 @@ class TugasListView extends GetView<TugasListController> {
                               ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(Icons.check_circle, color: Colors.green),
+                                    Icon(Icons.check_circle,
+                                        color: Colors.green),
                                     SizedBox(height: 4.0),
                                     Text('Skor: $score'),
                                   ],
