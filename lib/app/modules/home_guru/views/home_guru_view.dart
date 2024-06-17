@@ -9,10 +9,10 @@ import '../controllers/home_guru_controller.dart';
 
 class HomeGuruView extends GetView<HomeGuruController> {
   const HomeGuruView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
     final User? user = FirebaseAuth.instance.currentUser;
     final String userEmail = user?.email ?? 'User';
 
@@ -96,7 +96,6 @@ class HomeGuruView extends GetView<HomeGuruController> {
                                           'Sampai Jumpa Lagi',
                                           snackPosition: SnackPosition.TOP,
                                         );
-
                                         Navigator.of(context).pop();
                                       },
                                     );
@@ -143,7 +142,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                   children: [
                     MenuWidget(
                       icon_path: "assets/svg/play.svg",
-                      title: "Tambah Vidio",
+                      title: "Tambah Video",
                       link: "/list-materi-guru",
                     ),
                     MenuWidget(
@@ -160,8 +159,113 @@ class HomeGuruView extends GetView<HomeGuruController> {
                 ),
               ),
               Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 transform: Matrix4.translationValues(0.0, -60.0, 0.0),
-                child: Text("Dasbord Guru SMP Serang Baru"),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Daftar Tugas",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Obx(() {
+                        if (controller.isLoading.value) {
+                          return Center(child: CircularProgressIndicator());
+                        } else if (controller.tugasList.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'Tidak ada tugas yang tersedia.',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.grey),
+                            ),
+                          );
+                        } else {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: controller.tugasList.length,
+                            itemBuilder: (context, index) {
+                              var tugas = controller.tugasList[index];
+                              return GestureDetector(
+                                onTap: () {},
+                                child: Card(
+                                  margin: EdgeInsets.symmetric(vertical: 8.0),
+                                  elevation: 3.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: ListTile(
+                                    contentPadding: EdgeInsets.all(16.0),
+                                    title: Text(
+                                      tugas['namaTugas'],
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(tugas['deskripsi']),
+                                    trailing: IconButton(
+                                      icon:
+                                          Icon(Icons.delete, color: Colors.red),
+                                      onPressed: () {
+                                        QuickAlert.show(
+                                          context: context,
+                                          type: QuickAlertType.confirm,
+                                          title: 'Konfirmasi',
+                                          text:
+                                              'Apakah Anda yakin ingin menghapus tugas ini?',
+                                          confirmBtnText: 'Ya',
+                                          cancelBtnText: 'Tidak',
+                                          onConfirmBtnTap: () {
+                                            controller.deleteTugas(tugas['id']);
+                                            Get.snackbar(
+                                              'Tugas Dihapus',
+                                              'Tugas berhasil dihapus.',
+                                              snackPosition: SnackPosition.TOP,
+                                            );
+                                            Navigator.of(context).pop();
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                transform: Matrix4.translationValues(0.0, -20.0, 0.0),
+                child: Text(
+                  "Dashboard Guru SMP Serang Baru",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                ),
               ),
             ],
           ),
