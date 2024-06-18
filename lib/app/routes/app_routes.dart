@@ -23,6 +23,8 @@ abstract class Routes {
   static const VIDIO_PEMBELAJARAN = _Paths.VIDIO_PEMBELAJARAN;
   static const DAFTAR_MATERI_GURU = _Paths.DAFTAR_MATERI_GURU;
   static const UPDATE_MATERI_VIDIO_GURU = _Paths.UPDATE_MATERI_VIDIO_GURU;
+  static const LIST_TUGAS_SISWA = _Paths.LIST_TUGAS_SISWA;
+  static const DAFTAR_TUGAS_SISWA = _Paths.DAFTAR_TUGAS_SISWA;
 }
 
 abstract class _Paths {
@@ -47,4 +49,6 @@ abstract class _Paths {
   static const VIDIO_PEMBELAJARAN = '/vidio-pembelajaran';
   static const DAFTAR_MATERI_GURU = '/daftar-materi-guru';
   static const UPDATE_MATERI_VIDIO_GURU = '/update-materi-vidio-guru';
+  static const LIST_TUGAS_SISWA = '/list-tugas-siswa';
+  static const DAFTAR_TUGAS_SISWA = '/daftar-tugas-siswa';
 }

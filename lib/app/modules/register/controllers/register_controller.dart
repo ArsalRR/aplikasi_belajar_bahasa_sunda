@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 
 class RegisterController extends GetxController {
   var isPasswordHidden = true.obs;
@@ -24,50 +25,46 @@ class RegisterController extends GetxController {
         'nama': nama,
         'role': role,
       });
-      Get.snackbar(
-        'Success',
-        'User created successfully',
-        snackPosition: SnackPosition.BOTTOM,
-        duration: Duration(seconds: 2),
-        margin: EdgeInsets.all(12),
-      );
-      userCredential.user!.sendEmailVerification();
-      Get.defaultDialog(
-        title: 'Verify your email',
-        middleText: 'Please verify your email to continue. We have sent you an email verification link.',
-        textConfirm: 'OK',
-        textCancel: 'Resend',
-        confirmTextColor: Colors.white,
-        onConfirm: () {
+      
+      QuickAlert.show(
+        context: Get.context!,
+        type: QuickAlertType.success,
+        title: 'Success',
+        text: 'User created successfully. Please verify your email to continue.',
+        confirmBtnText: 'OK',
+        onConfirmBtnTap: () {
+          userCredential.user!.sendEmailVerification();
           Get.offAllNamed(Routes.LOGIN);
         },
-        onCancel: () {
+        cancelBtnText: 'Resend',
+        onCancelBtnTap: () {
           userCredential.user!.sendEmailVerification();
-          Get.snackbar(
-            'Success',
-            'Email verification link sent',
-            snackPosition: SnackPosition.BOTTOM,
-            duration: Duration(seconds: 2),
-            margin: EdgeInsets.all(12),
+          QuickAlert.show(
+            context: Get.context!,
+            type: QuickAlertType.success,
+            title: 'Success',
+            text: 'Email verification link sent',
+            confirmBtnText: 'OK',
           );
         },
       );
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Get.snackbar(
-          'Error',
-          'The password provided is too weak.',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
+        QuickAlert.show(
+          context: Get.context!,
+          type: QuickAlertType.error,
+          title: 'Error',
+          text: 'The password provided is too weak.',
+          confirmBtnText: 'OK',
         );
       } else if (e.code == 'email-already-in-use') {
-        Get.snackbar(
-          'Error',
-          'The account already exists for that email.',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
+        QuickAlert.show(
+          context: Get.context!,
+          type: QuickAlertType.error,
+          title: 'Error',
+          text: 'The account already exists for that email.',
+          confirmBtnText: 'OK',
         );
       }
       print(e.code);

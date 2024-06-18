@@ -6,6 +6,8 @@ import '../modules/bhs_sunda/bindings/bhs_sunda_binding.dart';
 import '../modules/bhs_sunda/views/bhs_sunda_view.dart';
 import '../modules/daftar_materi_guru/bindings/daftar_materi_guru_binding.dart';
 import '../modules/daftar_materi_guru/views/daftar_materi_guru_view.dart';
+import '../modules/daftar_tugas_siswa/bindings/daftar_tugas_siswa_binding.dart';
+import '../modules/daftar_tugas_siswa/views/daftar_tugas_siswa_view.dart';
 import '../modules/datar_nilai/bindings/datar_nilai_binding.dart';
 import '../modules/datar_nilai/views/datar_nilai_view.dart';
 import '../modules/edit_vidio_guru/bindings/edit_vidio_guru_binding.dart';
@@ -18,6 +20,8 @@ import '../modules/list_materi_guru/bindings/list_materi_guru_binding.dart';
 import '../modules/list_materi_guru/views/list_materi_guru_view.dart';
 import '../modules/list_sunda/bindings/list_sunda_binding.dart';
 import '../modules/list_sunda/views/list_sunda_view.dart';
+import '../modules/list_tugas_siswa/bindings/list_tugas_siswa_binding.dart';
+import '../modules/list_tugas_siswa/views/list_tugas_siswa_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -148,6 +152,16 @@ class AppPages {
       name: _Paths.UPDATE_MATERI_VIDIO_GURU,
       page: () => const UpdateMateriVidioGuruView(),
       binding: UpdateMateriVidioGuruBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_TUGAS_SISWA,
+      page: () => const ListTugasSiswaView(),
+      binding: ListTugasSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.DAFTAR_TUGAS_SISWA,
+      page: () => const DaftarTugasSiswaView(),
+      binding: DaftarTugasSiswaBinding(),
     ),
   ];
 }
