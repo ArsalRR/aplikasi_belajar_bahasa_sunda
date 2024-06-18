@@ -14,73 +14,131 @@ class LoginController extends GetxController {
   Stream<User?> get streamAuthStatus =>
       FirebaseAuth.instance.authStateChanges();
 
+  Future<User?> getCurrentUser() async {
+    return auth.currentUser;
+  }
+
+  Future<DocumentSnapshot> getUserData(User user) {
+    return firestore.collection('users').doc(user.uid).get();
+  }
+
   void login(String email, String password) async {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      if (userCredential.user!.emailVerified) {
-        DocumentSnapshot userDoc = await firestore
-            .collection('users')
-            .doc(userCredential.user!.uid)
-            .get();
-        String role = userDoc['role'];
-        Get.snackbar(
-          'Berhasil',
-          'Sudah Berhasil Login :)',
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.TOP,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
-        );
-        if (role == 'Guru') {
-          Get.offAllNamed(Routes.HOME_GURU);
+
+      User? user = userCredential.user;
+      if (user != null && user.emailVerified) {
+        DocumentSnapshot userDoc =
+            await firestore.collection('users').doc(user.uid).get();
+
+        if (userDoc.exists) {
+          String role = userDoc['role'];
+          Get.snackbar(
+            'Berhasil',
+            'Sudah Berhasil Login :)',
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+            snackPosition: SnackPosition.TOP,
+            duration: Duration(seconds: 2),
+            margin: EdgeInsets.all(12),
+          );
+
+          if (role == 'Guru') {
+            Get.offAllNamed(Routes.HOME_GURU);
+          } else if (role == 'Siswa') {
+            Get.offAllNamed(Routes.HOME);
+          } else {
+            Get.snackbar(
+              'Error',
+              'Role pengguna tidak dikenali.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              snackPosition: SnackPosition.BOTTOM,
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(12),
+            );
+          }
         } else {
-          Get.offAllNamed(Routes.HOME);
+          Get.snackbar(
+            'Error',
+            'Data pengguna tidak ditemukan.',
+            backgroundColor: Colors.red,
+            colorText: Colors.white,
+            snackPosition: SnackPosition.BOTTOM,
+            duration: Duration(seconds: 2),
+            margin: EdgeInsets.all(12),
+          );
         }
       } else {
         Get.snackbar(
           'Error',
-          'Please verify your email',
+          'Email belum diverifikasi. Silakan verifikasi email Anda.',
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
           snackPosition: SnackPosition.BOTTOM,
           duration: Duration(seconds: 2),
           margin: EdgeInsets.all(12),
         );
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('wrong email');
-        Get.snackbar(
-          'Error',
-          'No user found for that email.',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
-        );
-      } else if (e.code == 'wrong-password') {
-        print('wrong password');
-        Get.snackbar(
-          'Error',
-          'Wrong password provided for that user.',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
-        );
-      } else if (e.code == 'too-many-requests') {
-        print('too-many-requests');
-        Get.snackbar(
-          'Error',
-          'Too many requests. Try again later.',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          margin: EdgeInsets.all(12),
-        );
-      }
-      print(e.code);
+      _handleAuthException(e);
     } catch (e) {
-      print(e);
+      Get.snackbar(
+        'Error',
+        'Terjadi kesalahan. Silakan coba lagi nanti.',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+        margin: EdgeInsets.all(12),
+      );
+    }
+  }
+
+  void _handleAuthException(FirebaseAuthException e) {
+    if (e.code == 'user-not-found') {
+      Get.snackbar(
+        'Error',
+        'Pengguna tidak ditemukan dengan email tersebut.',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+        margin: EdgeInsets.all(12),
+      );
+    } else if (e.code == 'wrong-password') {
+      Get.snackbar(
+        'Error',
+        'Password yang dimasukkan salah.',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+        margin: EdgeInsets.all(12),
+      );
+    } else if (e.code == 'too-many-requests') {
+      Get.snackbar(
+        'Error',
+        'Terlalu banyak permintaan. Coba lagi nanti.',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+        margin: EdgeInsets.all(12),
+      );
+    } else {
+      Get.snackbar(
+        'Error',
+        'Terjadi kesalahan. Silakan coba lagi nanti.',
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+        margin: EdgeInsets.all(12),
+      );
     }
   }
 
