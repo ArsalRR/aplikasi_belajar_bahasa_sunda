@@ -23,7 +23,7 @@ class ListTugasSiswaView extends GetView<ListTugasSiswaController> {
                 color: Color(0xff008DDA),
                 child: AppBar(
                   title: const Text(
-                    'Materi Bahasa Sunda',
+                    'List Menu Tugas',
                     style: TextStyle(color: Colors.white),
                   ),
                   centerTitle: true,
