@@ -20,7 +20,10 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
             backgroundColor: Colors.blue,
             title: Text(
               "Tentang Sekolah",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Poppins',
+              ),
             ),
             centerTitle: true,
             leading: IconButton(
@@ -43,7 +46,10 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                     padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
                     child: Text(
                       "Alamat",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
                   ),
                 ),
@@ -65,6 +71,7 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                       "Jayasampurna, Kec. Serang Baru, Kabupaten Bekasi, Jawa Barat 17330",
                       style: TextStyle(
                         fontSize: 12,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                   ),
@@ -78,18 +85,29 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                         children: [
                           Text(
                             "VISI SMPN1 SERANG BARU",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                            ),
                           ),
                           SizedBox(height: 6),
                           Text(
                             "Terwujudnya Warga Sekolah Unggulan yang Religius, Cerdas, Terampil, Berkarakter dan Berwawasan Global",
-                            style: TextStyle(fontSize: 12),
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                            ),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 40),
                           Text(
                             "MISI SMPN1 SERANG BARU",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                            ),
                           ),
                           SizedBox(height: 6),
                           buildMissionItem(size, 'Menciptakan kenyamanan kegiatan beribadah bagi warga sekolah'),
@@ -119,7 +137,10 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
           Expanded(
             child: Text(
               text,
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: 'Poppins',
+              ),
               textAlign: TextAlign.justify,
             ),
           ),
