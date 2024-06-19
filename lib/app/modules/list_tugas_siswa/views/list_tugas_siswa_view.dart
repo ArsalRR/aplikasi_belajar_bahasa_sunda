@@ -40,7 +40,7 @@ class ListTugasSiswaView extends GetView<ListTugasSiswaController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 120.0),
+            padding: const EdgeInsets.only(top: 160.0),
             child: ListView(
               padding: EdgeInsets.all(17.0),
               children: [
