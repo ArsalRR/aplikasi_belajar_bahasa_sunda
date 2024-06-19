@@ -1,10 +1,8 @@
 import 'package:capstone_project/app/widget/MenuWidget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-
 import '../controllers/home_guru_controller.dart';
 
 class HomeGuruView extends GetView<HomeGuruController> {
@@ -13,8 +11,6 @@ class HomeGuruView extends GetView<HomeGuruController> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final User? user = FirebaseAuth.instance.currentUser;
-    final String userEmail = user?.email ?? 'User';
 
     return Scaffold(
       body: SafeArea(
@@ -35,14 +31,19 @@ class HomeGuruView extends GetView<HomeGuruController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Hai Guru, ${controller.fullname.value}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Obx(() {
+                            if (controller.isLoading.value) {
+                              return CircularProgressIndicator();
+                            }
+                            return Text(
+                              'Hai Guru, ${controller.fullname.value}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          }),
                           SizedBox(height: 8),
                           Text(
                             'Selamat Datang Kembali',
