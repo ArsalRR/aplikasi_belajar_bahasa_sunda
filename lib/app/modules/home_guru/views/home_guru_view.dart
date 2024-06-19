@@ -36,7 +36,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Hai Guru, $userEmail',
+                            'Hai Guru, ${controller.fullname.value}',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 13,
@@ -158,7 +158,6 @@ class HomeGuruView extends GetView<HomeGuruController> {
                   ],
                 ),
               ),
-           
               Container(
                 transform: Matrix4.translationValues(0.0, -20.0, 0.0),
                 child: Text(
