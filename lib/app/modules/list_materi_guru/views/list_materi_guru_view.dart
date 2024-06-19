@@ -22,7 +22,7 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
                 color: Color(0xff008DDA),
                 child: AppBar(
                   title: const Text(
-                    'Materi Video Guru',
+                    'Materi Vidio Guru',
                     style: TextStyle(color: Colors.white),
                   ),
                   centerTitle: true,

@@ -55,8 +55,8 @@ class ListSundaView extends GetView<ListSundaController> {
                 SizedBox(height: 21),
                 buildCard(
                   imageUrl: 'assets/img/videonew.png',
-                  title: 'Video Pembelajaran',
-                  subtitle: 'Lihat video untuk tingkatkan bahasamu',
+                  title: 'Vidio Pembelajaran',
+                  subtitle: 'Lihat vidio untuk tingkatkan bahasamu',
                   onTap: () {
                     Get.toNamed(Routes.VIDIO_PEMBELAJARAN);
                   },
