@@ -148,7 +148,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                     ),
                     MenuWidget(
                       icon_path: "assets/svg/creative-writing.svg",
-                      title: "Tugas Siswa",
+                      title: "Tugas Guru",
                       link: "/list-tugas-siswa",
                     ),
                     MenuWidget(
