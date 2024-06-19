@@ -43,17 +43,19 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * 0.06),
                     child: Text(
                       "Alamat",
                       style: TextStyle(
                         fontSize: 16,
                         fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 6),
+                SizedBox(height: 10),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
@@ -63,10 +65,14 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                     fit: BoxFit.cover,
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * 0.06),
                     child: Text(
                       "Jayasampurna, Kec. Serang Baru, Kabupaten Bekasi, Jawa Barat 17330",
                       style: TextStyle(
@@ -80,7 +86,8 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                 Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * 0.06),
                       child: Column(
                         children: [
                           Text(
@@ -110,10 +117,14 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
                             ),
                           ),
                           SizedBox(height: 6),
-                          buildMissionItem(size, 'Menciptakan kenyamanan kegiatan beribadah bagi warga sekolah'),
-                          buildMissionItem(size, 'Mewujudkan sistem pembelajaran yang kreatif dan inovatif'),
-                          buildMissionItem(size, 'Mewadahi bakat minat peserta didik dalam kegiatan organisasi sekolah dan pengembangan diri'),
-                          buildMissionItem(size, 'Mewujudkan pembiasaan pendidikan karakter dalam keseluruhan kegiatan sekolah'),
+                          buildMissionItem(size,
+                              'Menciptakan kenyamanan kegiatan beribadah bagi warga sekolah'),
+                          buildMissionItem(size,
+                              'Mewujudkan sistem pembelajaran yang kreatif dan inovatif'),
+                          buildMissionItem(size,
+                              'Mewadahi bakat minat peserta didik dalam kegiatan organisasi sekolah dan pengembangan diri'),
+                          buildMissionItem(size,
+                              'Mewujudkan pembiasaan pendidikan karakter dalam keseluruhan kegiatan sekolah'),
                         ],
                       ),
                     ),
