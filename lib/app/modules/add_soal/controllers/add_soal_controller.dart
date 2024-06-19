@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../../data/models/soal_model.dart';
+import 'package:capstone_project/main.dart';
 
 class AddSoalController extends GetxController {
   final TextEditingController namaTugasController = TextEditingController();
@@ -52,8 +54,7 @@ class AddSoalController extends GetxController {
       };
 
       try {
-        final tugasDoc =
-            await FirebaseFirestore.instance.collection('tugas').add(tugasData);
+        final tugasDoc = await FirebaseFirestore.instance.collection('tugas').add(tugasData);
 
         for (var soal in soalList) {
           final soalData = soal.toMap();
@@ -64,6 +65,7 @@ class AddSoalController extends GetxController {
         }
 
         Get.snackbar('Success', 'Tugas berhasil disimpan');
+        _showNotification('Tugas Baru', 'Tugas ${namaTugasController.text}');
         _resetForm();
       } catch (e) {
         Get.snackbar('Error', 'Gagal menyimpan tugas: $e');
@@ -71,6 +73,21 @@ class AddSoalController extends GetxController {
     } else {
       Get.snackbar('Error', 'Nama tugas tidak boleh kosong');
     }
+  }
+
+  void _showNotification(String title, String body) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'your_channel_id',
+      'your_channel_name',
+      channelDescription: 'your_channel_description',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: false,
+    );
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(0, title, body, platformChannelSpecifics);
   }
 
   void _resetForm() {
