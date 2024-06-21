@@ -36,7 +36,7 @@ class HomeView extends GetView<HomeController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Obx(() => Text(
-                                'Hai, ${controller.fullName.value}',
+                                'Hai Siswa, ${controller.fullName.value}',
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 13,
