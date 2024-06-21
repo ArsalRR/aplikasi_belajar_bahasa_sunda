@@ -109,8 +109,6 @@ class _TugasSiswaViewState extends State<TugasSiswaView> {
                                     decoration: BoxDecoration(
                                       color: buttonColor,
                                       borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                          color: Colors.black, width: 0.5),
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -185,7 +183,12 @@ class _TugasSiswaViewState extends State<TugasSiswaView> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+              ),
             ),
           );
         }

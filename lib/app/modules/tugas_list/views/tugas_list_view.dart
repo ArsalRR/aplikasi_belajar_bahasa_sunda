@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
-
 import '../controllers/tugas_list_controller.dart';
 
 class TugasListView extends GetView<TugasListController> {
@@ -40,8 +39,10 @@ class TugasListView extends GetView<TugasListController> {
           Padding(
             padding: const EdgeInsets.only(top: 160.0),
             child: Obx(() {
-              if (controller.tugasList.isEmpty) {
+              if (controller.isLoading.value) {
                 return Center(child: CircularProgressIndicator());
+              } else if (controller.tugasList.isEmpty) {
+                return Center(child: Text('Tidak ada tugas yang ditemukan'));
               } else {
                 return ListView.builder(
                   padding: EdgeInsets.all(8.0),
@@ -53,38 +54,52 @@ class TugasListView extends GetView<TugasListController> {
                       onTap: () {
                         Get.toNamed('/tugas-siswa', arguments: tugas['id']);
                       },
-                      child: Card(
+                      child: Container(
                         margin: EdgeInsets.symmetric(vertical: 8.0),
-                        elevation: 3.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFFFFF),
+                          borderRadius: BorderRadius.circular(15.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5.0,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
                         ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(16.0),
-                          title: Text(
-                            tugas['namaTugas'],
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                        child: Card(
+                          margin: EdgeInsets.all(0),
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          subtitle: Text(tugas['deskripsi']),
-                          trailing: score != null
-                              ? Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.check_circle,
-                                        color: Colors.green),
-                                    SizedBox(height: 4.0),
-                                    Text('Skor: $score'),
-                                  ],
-                                )
-                              : Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.pending, color: Colors.orange),
-                                    SizedBox(height: 4.0),
-                                    Text('Belum dikerjakan'),
-                                  ],
-                                ),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.all(16.0),
+                            title: Text(
+                              tugas['namaTugas'],
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(tugas['deskripsi']),
+                            trailing: score != null
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.check_circle,
+                                          color: Colors.green),
+                                      SizedBox(height: 4.0),
+                                      Text('Skor: $score'),
+                                    ],
+                                  )
+                                : Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.pending, color: Colors.orange),
+                                      SizedBox(height: 4.0),
+                                      Text('Belum dikerjakan'),
+                                    ],
+                                  ),
+                          ),
                         ),
                       ),
                     );
