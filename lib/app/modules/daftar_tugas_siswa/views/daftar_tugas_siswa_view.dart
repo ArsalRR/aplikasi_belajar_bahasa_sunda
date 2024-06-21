@@ -11,11 +11,14 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff008DDA),
-        title: Text('Daftar Tugas Siswa',
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Colors.white,
-                fontWeight: FontWeight.bold)),
+        title: Text(
+          'Daftar Tugas Siswa',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Get.back(),
@@ -46,14 +49,12 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                        child: Text(
-                          "Daftar Tugas",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                          ),
+                      Text(
+                        "Daftar Tugas",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
                         ),
                       ),
                       SizedBox(height: 15),
@@ -64,7 +65,10 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                           return Center(
                             child: Text(
                               'Tidak ada tugas yang tersedia.',
-                              style: TextStyle(fontSize: 16, color: Colors.grey),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
                             ),
                           );
                         } else {
@@ -82,49 +86,54 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFFFFFFF),
-                                      borderRadius: BorderRadius.circular(15.0),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black12,
-                                          blurRadius: 5.0,
-                                          offset: Offset(0, 4),
+                                  child: ListTile(
+                                    contentPadding: EdgeInsets.all(16.0),
+                                    title: Text(
+                                      tugas['namaTugas'],
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    subtitle: Text(tugas['deskripsi']),
+                                    trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.edit,
+                                              color: Colors.blue),
+                                          onPressed: () {
+                                            Get.toNamed('/edit-tugas',
+                                                arguments: tugas);
+                                          },
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.delete,
+                                              color: Colors.red),
+                                          onPressed: () {
+                                            QuickAlert.show(
+                                              context: context,
+                                              type: QuickAlertType.confirm,
+                                              title: 'Konfirmasi',
+                                              text:
+                                                  'Apakah Anda yakin ingin menghapus tugas ini?',
+                                              confirmBtnText: 'Ya',
+                                              cancelBtnText: 'Tidak',
+                                              onConfirmBtnTap: () {
+                                                controller
+                                                    .deleteTugas(tugas['id']);
+                                                Get.snackbar(
+                                                  'Tugas Dihapus',
+                                                  'Tugas berhasil dihapus.',
+                                                  snackPosition:
+                                                      SnackPosition.TOP,
+                                                );
+                                                Navigator.of(context).pop();
+                                              },
+                                            );
+                                          },
                                         ),
                                       ],
-                                    ),
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.all(16.0),
-                                      title: Text(
-                                        tugas['namaTugas'],
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      subtitle: Text(tugas['deskripsi']),
-                                      trailing: IconButton(
-                                        icon: Icon(Icons.delete, color: Colors.red),
-                                        onPressed: () {
-                                          QuickAlert.show(
-                                            context: context,
-                                            type: QuickAlertType.confirm,
-                                            title: 'Konfirmasi',
-                                            text: 'Apakah Anda yakin ingin menghapus tugas ini?',
-                                            confirmBtnText: 'Ya',
-                                            cancelBtnText: 'Tidak',
-                                            onConfirmBtnTap: () {
-                                              controller.deleteTugas(tugas['id']);
-                                              Get.snackbar(
-                                                'Tugas Dihapus',
-                                                'Tugas berhasil dihapus.',
-                                                snackPosition: SnackPosition.TOP,
-                                              );
-                                              Navigator.of(context).pop();
-                                            },
-                                          );
-                                        },
-                                      ),
                                     ),
                                   ),
                                 ),
