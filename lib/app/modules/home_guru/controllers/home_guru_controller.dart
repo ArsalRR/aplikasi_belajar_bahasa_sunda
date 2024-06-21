@@ -10,7 +10,6 @@ class HomeGuruController extends GetxController {
   final RxString fullname = ''.obs;
   final RxString email = ''.obs;
   final RxString profileImageUrl = ''.obs;
-  final RxList<Map<String, dynamic>> tugasList = <Map<String, dynamic>>[].obs;
   final RxBool isLoading = true.obs;
 
   final count = 0.obs;
@@ -22,18 +21,22 @@ class HomeGuruController extends GetxController {
   }
 
   void fetchUserData() async {
-    isLoading.value = true;
-    User? user = auth.currentUser;
-    if (user != null) {
-      email.value = user.email ?? '';
-      DocumentSnapshot userDoc =
-          await firestore.collection('users').doc(user.uid).get();
-      if (userDoc.exists) {
-        fullname.value = userDoc['nama'] ?? '';
-        profileImageUrl.value = userDoc['profileImageUrl'] ?? '';
+    try {
+      isLoading.value = true;
+      User? user = auth.currentUser;
+      if (user != null) {
+        email.value = user.email ?? '';
+        DocumentSnapshot userDoc = await firestore.collection('users').doc(user.uid).get();
+        if (userDoc.exists) {
+          fullname.value = userDoc['nama'] ?? '';
+          profileImageUrl.value = userDoc['profileImageUrl'] ?? '';
+        }
       }
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal Mendapatkan Data $e');
+    } finally {
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
   void increment() => count.value++;

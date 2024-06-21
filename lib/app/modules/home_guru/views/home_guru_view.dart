@@ -11,6 +11,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final controller = Get.put(HomeGuruController());
 
     return Scaffold(
       body: SafeArea(
@@ -103,11 +104,14 @@ class HomeGuruView extends GetView<HomeGuruController> {
                                   }
                                 });
                               },
-                              child: CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/img/teacher.png'),
-                                radius: 20,
-                              ),
+                              child: Obx(() {
+                                return CircleAvatar(
+                                  backgroundImage: controller.profileImageUrl.value.isNotEmpty
+                                      ? NetworkImage(controller.profileImageUrl.value)
+                                      : AssetImage('assets/img/teacher.png') as ImageProvider,
+                                  radius: 20,
+                                );
+                              }),
                             ),
                           ),
                           SizedBox(height: 10),
