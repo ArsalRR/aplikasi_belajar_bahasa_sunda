@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quickalert/quickalert.dart';
 
 class TugasSiswaController extends GetxController {
   var soalList = [].obs;
@@ -22,7 +23,12 @@ class TugasSiswaController extends GetxController {
       fetchSoalList(tugasId.value);
       checkIfTaskCompleted(tugasId.value);
     } else {
-      Get.snackbar('Error', 'Tidak dapat menemukan ID pengguna.');
+      QuickAlert.show(
+        context: Get.context!,
+        type: QuickAlertType.error,
+        title: 'Error',
+        text: 'Tidak dapat menemukan ID pengguna.',
+      );
     }
   }
 
@@ -69,8 +75,12 @@ class TugasSiswaController extends GetxController {
       } else {
         skor.value = 0;
       }
-      Get.snackbar(
-          'Info', 'Tugas sudah diselesaikan dengan skor: ${skor.value}');
+      QuickAlert.show(
+        context: Get.context!,
+        type: QuickAlertType.info,
+        title: 'Info',
+        text: 'Tugas sudah diselesaikan dengan skor: ${skor.value}',
+      );
     }
   }
 
@@ -89,7 +99,12 @@ class TugasSiswaController extends GetxController {
     isTaskCompleted.value = true;
     skor.value = calculatedScore;
     updateAnswerStatus();
-    Get.snackbar('Info', 'Tugas selesai dengan skor: $calculatedScore');
+    QuickAlert.show(
+      context: Get.context!,
+      type: QuickAlertType.success,
+      title: 'Info',
+      text: 'Tugas selesai dengan skor: $calculatedScore',
+    );
   }
 
   int calculateScore() {

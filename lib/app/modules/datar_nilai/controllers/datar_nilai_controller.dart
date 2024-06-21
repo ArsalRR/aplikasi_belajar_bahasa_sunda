@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class DatarNilaiController extends GetxController {
-  //TODO: Implement EditVidioGuruController
 
   final count = 0.obs;
   @override
