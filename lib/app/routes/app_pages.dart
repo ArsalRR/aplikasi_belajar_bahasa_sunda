@@ -10,6 +10,8 @@ import '../modules/daftar_tugas_siswa/bindings/daftar_tugas_siswa_binding.dart';
 import '../modules/daftar_tugas_siswa/views/daftar_tugas_siswa_view.dart';
 import '../modules/datar_nilai/bindings/datar_nilai_binding.dart';
 import '../modules/datar_nilai/views/datar_nilai_view.dart';
+import '../modules/edit_tugas/bindings/edit_tugas_binding.dart';
+import '../modules/edit_tugas/views/edit_tugas_view.dart';
 import '../modules/edit_vidio_guru/bindings/edit_vidio_guru_binding.dart';
 import '../modules/edit_vidio_guru/views/edit_vidio_guru_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -162,6 +164,11 @@ class AppPages {
       name: _Paths.DAFTAR_TUGAS_SISWA,
       page: () => const DaftarTugasSiswaView(),
       binding: DaftarTugasSiswaBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_TUGAS,
+      page: () => const EditTugasView(),
+      binding: EditTugasBinding(),
     ),
   ];
 }

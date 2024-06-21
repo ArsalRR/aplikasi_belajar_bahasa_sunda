@@ -25,6 +25,7 @@ abstract class Routes {
   static const UPDATE_MATERI_VIDIO_GURU = _Paths.UPDATE_MATERI_VIDIO_GURU;
   static const LIST_TUGAS_SISWA = _Paths.LIST_TUGAS_SISWA;
   static const DAFTAR_TUGAS_SISWA = _Paths.DAFTAR_TUGAS_SISWA;
+  static const EDIT_TUGAS = _Paths.EDIT_TUGAS;
 }
 
 abstract class _Paths {
@@ -51,4 +52,5 @@ abstract class _Paths {
   static const UPDATE_MATERI_VIDIO_GURU = '/update-materi-vidio-guru';
   static const LIST_TUGAS_SISWA = '/list-tugas-siswa';
   static const DAFTAR_TUGAS_SISWA = '/daftar-tugas-siswa';
+  static const EDIT_TUGAS = '/edit-tugas';
 }
