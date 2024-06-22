@@ -174,7 +174,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.TUGAS_DETAIL,
-      page: () => const TugasDetailView(),
+      page: () => TugasDetailView(),
       binding: TugasDetailBinding(),
     ),
   ];

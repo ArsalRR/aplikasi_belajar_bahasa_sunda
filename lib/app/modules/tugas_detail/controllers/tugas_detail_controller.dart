@@ -1,23 +1,43 @@
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TugasDetailController extends GetxController {
-  //TODO: Implement TugasDetailController
+  var tugasId = ''.obs;
+  var siswaList = <Map<String, dynamic>>[].obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    tugasId.value = Get.arguments;
+    fetchSiswaList();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  void fetchSiswaList() async {
+    try {
+      var resultsSnapshot = await FirebaseFirestore.instance
+          .collection('results')
+          .where('tugasId', isEqualTo: tugasId.value)
+          .get();
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+      var userIds = resultsSnapshot.docs.map((doc) => doc['userId']).toList();
 
-  void increment() => count.value++;
+      var usersSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where(FieldPath.documentId, whereIn: userIds)
+          .get();
+
+      var userMap = {for (var doc in usersSnapshot.docs) doc.id: doc['nama']};
+
+      siswaList.value = resultsSnapshot.docs.map((doc) {
+        var userId = doc['userId'];
+        return {
+          'userId': userId,
+          'nama': userMap[userId] ?? 'Unknown',
+          'score': doc['score'],
+        };
+      }).toList();
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal mengambil daftar siswa: $e');
+    }
+  }
 }
