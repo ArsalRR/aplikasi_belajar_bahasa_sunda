@@ -1,102 +1,108 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/datar_nilai_controller.dart';
 
-class DatarNilaiView extends GetView<DatarNilaiController> {
-  const DatarNilaiView({Key? key}) : super(key: key);
+class DatarNilaiView extends StatelessWidget {
+  final DatarNilaiController controller = Get.put(DatarNilaiController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Daftar Nilai Siswa',
-            style: TextStyle(fontSize: 14),
-          ),
-          centerTitle: true,
+      appBar: AppBar(
+        title: Text(
+          'Daftar Tugas',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        body: Stack(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    "Tugas yang sudah dikerjakan",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600),
+        backgroundColor: Colors.blueAccent,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Obx(() {
+          if (controller.tugasList.isEmpty) {
+            return Center(
+              child: Text(
+                'Tidak ada tugas tersedia.',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: controller.tugasList.length,
+              itemBuilder: (context, index) {
+                var tugas = controller.tugasList[index];
+
+                return Card(
+                  elevation: 6,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 200, left: 30, right: 30),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(4),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0, 4),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 7),
-                            child: Text(
-                              " > Mengumpulkan",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed('/tugas-detail', arguments: tugas['id']);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.blueAccent.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                          )),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: 8,
-                          // Number of items in the ListView
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8),
-                              child: SizedBox(
-                                height: 70,
-                                child: Card(
-                                  color: Colors.blue[400],
-                                  child: ListTile(
-                                    trailing: Icon(
-                                      Icons.assignment,
-                                      color: Colors.white,
-                                    ),
-                                    title: Text('Abdi ${index + 1}'),
-                                    subtitle: Text(
-                                      'Nilai ${index + 5}',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                    ),
+                            child: Icon(
+                              Icons.assignment,
+                              size: 50,
+                              color: Colors.blueAccent,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  tugas['namaTugas'],
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                    ],
+                                SizedBox(height: 5),
+                                Text(
+                                  tugas['deskripsi'],
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'Jumlah Pengumpul: ${tugas['jumlahPengumpul']}',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blueAccent,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ],
-        ));
+                );
+              },
+            );
+          }
+        }),
+      ),
+    );
   }
 }

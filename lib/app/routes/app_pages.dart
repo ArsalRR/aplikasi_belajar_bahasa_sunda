@@ -38,6 +38,8 @@ import '../modules/tambah_video_guru/bindings/tambah_video_guru_binding.dart';
 import '../modules/tambah_video_guru/views/tambah_video_guru_view.dart';
 import '../modules/tentang_sekolah/bindings/tentang_sekolah_binding.dart';
 import '../modules/tentang_sekolah/views/tentang_sekolah_view.dart';
+import '../modules/tugas_detail/bindings/tugas_detail_binding.dart';
+import '../modules/tugas_detail/views/tugas_detail_view.dart';
 import '../modules/tugas_list/bindings/tugas_list_binding.dart';
 import '../modules/tugas_list/views/tugas_list_view.dart';
 import '../modules/tugas_siswa/bindings/tugas_siswa_binding.dart';
@@ -112,7 +114,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DATAR_NILAI,
-      page: () => const DatarNilaiView(),
+      page: () => DatarNilaiView(),
       binding: DatarNilaiBinding(),
     ),
     GetPage(
@@ -169,6 +171,11 @@ class AppPages {
       name: _Paths.EDIT_TUGAS,
       page: () => const EditTugasView(),
       binding: EditTugasBinding(),
+    ),
+    GetPage(
+      name: _Paths.TUGAS_DETAIL,
+      page: () => const TugasDetailView(),
+      binding: TugasDetailBinding(),
     ),
   ];
 }

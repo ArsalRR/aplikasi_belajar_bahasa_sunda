@@ -26,6 +26,7 @@ abstract class Routes {
   static const LIST_TUGAS_SISWA = _Paths.LIST_TUGAS_SISWA;
   static const DAFTAR_TUGAS_SISWA = _Paths.DAFTAR_TUGAS_SISWA;
   static const EDIT_TUGAS = _Paths.EDIT_TUGAS;
+  static const TUGAS_DETAIL = _Paths.TUGAS_DETAIL;
 }
 
 abstract class _Paths {
@@ -53,4 +54,5 @@ abstract class _Paths {
   static const LIST_TUGAS_SISWA = '/list-tugas-siswa';
   static const DAFTAR_TUGAS_SISWA = '/daftar-tugas-siswa';
   static const EDIT_TUGAS = '/edit-tugas';
+  static const TUGAS_DETAIL = '/tugas-detail';
 }
