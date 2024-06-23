@@ -21,7 +21,10 @@ class TugasListView extends GetView<TugasListController> {
                 child: AppBar(
                   title: const Text(
                     'Daftar Tugas',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,

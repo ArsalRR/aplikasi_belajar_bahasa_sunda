@@ -9,6 +9,8 @@ class TugasDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+  
+        centerTitle: true,
         backgroundColor: Color(0xff008DDA),
         title: Text('Detail Tugas',
             style: TextStyle(
@@ -55,6 +57,7 @@ class TugasDetailView extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
                               fontSize: 18,
                             ),
                           ),
@@ -69,6 +72,7 @@ class TugasDetailView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
                                   color: Colors.black87,
                                 ),
                               ),
@@ -78,7 +82,9 @@ class TugasDetailView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
                                   color: Colors.grey.shade700,
+
                                 ),
                               ),
                             ],

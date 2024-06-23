@@ -28,7 +28,11 @@ class _TugasSiswaViewState extends State<TugasSiswaView> {
                 child: AppBar(
                   title: const Text(
                     'Tugas Siswa',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold
+
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -67,7 +71,9 @@ class _TugasSiswaViewState extends State<TugasSiswaView> {
                             Text(
                               soal['soalText'],
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 16, fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins'
+                                  ),
                             ),
                             SizedBox(height: 10),
                             Column(

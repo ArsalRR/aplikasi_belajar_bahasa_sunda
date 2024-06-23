@@ -1,14 +1,14 @@
 import 'package:capstone_project/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import '../controllers/list_tugas_siswa_controller.dart';
 
 class ListTugasSiswaView extends GetView<ListTugasSiswaController> {
   const ListTugasSiswaView({Key? key}) : super(key: key);
+
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -24,7 +24,11 @@ class ListTugasSiswaView extends GetView<ListTugasSiswaController> {
                 child: AppBar(
                   title: const Text(
                     'List Menu Tugas',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -105,10 +109,16 @@ class ListTugasSiswaView extends GetView<ListTugasSiswaController> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     SizedBox(height: 8),
-                    Text(subtitle),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
                   ],
                 ),
               ),

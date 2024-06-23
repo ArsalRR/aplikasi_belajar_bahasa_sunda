@@ -23,6 +23,7 @@ class TentangSekolahView extends GetView<TentangSekolahController> {
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold
               ),
             ),
             centerTitle: true,

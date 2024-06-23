@@ -27,6 +27,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   centerTitle: true,

@@ -9,7 +9,9 @@ class DatarNilaiView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
+        
         backgroundColor: Color(0xff008DDA),
+        centerTitle: true,
         title: Text('Daftar Tugas',
             style: TextStyle(
                 fontFamily: 'Poppins',
@@ -74,6 +76,7 @@ class DatarNilaiView extends StatelessWidget {
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black87,
+                                    fontFamily: 'Poppins'
                                   ),
                                 ),
                                 SizedBox(height: 5),
@@ -82,6 +85,7 @@ class DatarNilaiView extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey.shade700,
+                                    fontFamily: 'Poppins'
                                   ),
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
@@ -93,6 +97,7 @@ class DatarNilaiView extends StatelessWidget {
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.blueAccent,
+                                    fontFamily: 'Poppins'
                                   ),
                                 ),
                               ],

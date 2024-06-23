@@ -78,7 +78,9 @@ class LoginView extends GetView<LoginController> {
                       },
                       child: Text(
                         'Lupa Password?',
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: Colors.blue,
+                        fontFamily: 'Poppins'
+                        ),
                       ),
                     ),
                   ),
@@ -99,6 +101,7 @@ class LoginView extends GetView<LoginController> {
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins'
                         ),
                       ),
                       onPressed: () {
@@ -142,6 +145,7 @@ class LoginView extends GetView<LoginController> {
                           fontSize: 18,
                           color: Color(0xff008DDA),
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins'
                         ),
                       ),
                       onPressed: () {

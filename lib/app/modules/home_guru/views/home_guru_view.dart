@@ -42,6 +42,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                                 color: Colors.white,
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'
                               ),
                             );
                           }),
@@ -52,6 +53,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
                             ),
                           ),
                         ],
@@ -171,6 +173,7 @@ class HomeGuruView extends GetView<HomeGuruController> {
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),

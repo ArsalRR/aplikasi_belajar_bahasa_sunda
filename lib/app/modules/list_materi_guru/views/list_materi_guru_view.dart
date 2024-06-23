@@ -6,8 +6,9 @@ import '../controllers/list_materi_guru_controller.dart';
 
 class ListMateriGuruView extends GetView<ListMateriGuruController> {
   const ListMateriGuruView({Key? key}) : super(key: key);
+
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -23,7 +24,11 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
                 child: AppBar(
                   title: const Text(
                     'Materi Vidio Guru',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -38,7 +43,6 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
               ),
             ),
           ),
-          // Body content
           Padding(
             padding: const EdgeInsets.only(top: 160.0),
             child: ListView(
@@ -105,10 +109,16 @@ class ListMateriGuruView extends GetView<ListMateriGuruController> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     SizedBox(height: 8),
-                    Text(subtitle),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
                   ],
                 ),
               ),

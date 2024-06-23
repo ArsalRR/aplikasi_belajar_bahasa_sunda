@@ -8,6 +8,7 @@ class AddSoalView extends GetView<AddSoalController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color(0xff008DDA),
         title: Text('Tambah Soal Siswa',
             style: TextStyle(
@@ -41,6 +42,7 @@ class AddSoalView extends GetView<AddSoalController> {
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins'
                 ),
               ),
               Obx(

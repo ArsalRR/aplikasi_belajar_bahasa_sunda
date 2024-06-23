@@ -26,7 +26,7 @@ class BhsSundaView extends GetView<BhsSundaController> {
                 child: AppBar(
                   title: const Text(
                     'Materi Bahasa Sunda',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -64,7 +64,12 @@ class BhsSundaView extends GetView<BhsSundaController> {
               }
 
               if (controller.pesanerror.isNotEmpty) {
-                return Center(child: Text(controller.pesanerror.value));
+                return Center(
+                  child: Text(
+                    controller.pesanerror.value,
+                    style: TextStyle(fontFamily: 'Poppins'),
+                  ),
+                );
               }
 
               return ListView.builder(

@@ -35,7 +35,15 @@ flutter:
   assets:
     - assets/img/
     - assets/svg/
-    - assets/fonts/
+  fonts: 
+    - family: Poppins
+      fonts: 
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins-Black.ttf
 
 flutter_icons:
   android: true

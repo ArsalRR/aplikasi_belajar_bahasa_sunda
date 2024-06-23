@@ -24,7 +24,11 @@ class ListSundaView extends GetView<ListSundaController> {
                 child: AppBar(
                   title: const Text(
                     'Materi Bahasa Sunda',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.transparent,
@@ -105,10 +109,16 @@ class ListSundaView extends GetView<ListSundaController> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     SizedBox(height: 8),
-                    Text(subtitle),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
                   ],
                 ),
               ),

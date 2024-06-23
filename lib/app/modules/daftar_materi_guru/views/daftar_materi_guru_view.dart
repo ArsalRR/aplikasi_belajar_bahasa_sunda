@@ -45,6 +45,7 @@ class DaftarMateriGuruView extends GetView<DaftarMateriGuruController> {
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold
               ),
             ),
             centerTitle: true,

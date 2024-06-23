@@ -29,7 +29,12 @@ class TambahVideoGuruView extends GetView<TambahVideoGuruController> {
             backgroundColor: Colors.blue,
             title: Text(
               "Tambah Materi Vidio",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold
+              
+              ),
+              
             ),
             centerTitle: true,
             leading: IconButton(

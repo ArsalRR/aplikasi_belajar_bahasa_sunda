@@ -41,6 +41,7 @@ class HomeView extends GetView<HomeController> {
                                   color: Colors.white,
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins'
                                 ),
                               )),
                           const SizedBox(height: 8),
@@ -50,6 +51,7 @@ class HomeView extends GetView<HomeController> {
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins'
                             ),
                           ),
                         ],
@@ -175,6 +177,7 @@ class HomeView extends GetView<HomeController> {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins'
                   ),
                 ),
               ),

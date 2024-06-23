@@ -10,6 +10,7 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color(0xff008DDA),
         title: Text(
           'Daftar Tugas Siswa',
@@ -17,6 +18,7 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
             fontFamily: 'Poppins',
             color: Colors.white,
             fontWeight: FontWeight.bold,
+
           ),
         ),
         leading: IconButton(

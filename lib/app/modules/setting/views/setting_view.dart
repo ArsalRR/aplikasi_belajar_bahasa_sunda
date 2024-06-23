@@ -223,6 +223,7 @@ class _SettingViewState extends State<SettingView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color(0xff008DDA),
         title: Text('Pengaturan',
             style: TextStyle(
@@ -287,6 +288,7 @@ class _SettingViewState extends State<SettingView> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
+                            fontFamily: 'Poppins'
                           ),
                         ),
                         SizedBox(height: 8),
@@ -304,6 +306,7 @@ class _SettingViewState extends State<SettingView> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
+                            fontFamily: 'Poppins'
                           ),
                         ),
                         SizedBox(height: 8),
@@ -321,6 +324,7 @@ class _SettingViewState extends State<SettingView> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
+                            fontFamily: 'Poppins'
                           ),
                         ),
                         SizedBox(height: 8),
@@ -357,6 +361,7 @@ class _SettingViewState extends State<SettingView> {
                         fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins'
                       ),
                     ),
                   ),
