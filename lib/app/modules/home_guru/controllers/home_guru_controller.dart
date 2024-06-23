@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,14 +27,33 @@ class HomeGuruController extends GetxController {
       User? user = auth.currentUser;
       if (user != null) {
         email.value = user.email ?? '';
-        DocumentSnapshot userDoc = await firestore.collection('users').doc(user.uid).get();
+        DocumentSnapshot userDoc =
+            await firestore.collection('users').doc(user.uid).get();
         if (userDoc.exists) {
-          fullname.value = userDoc['nama'] ?? '';
-          profileImageUrl.value = userDoc['profileImageUrl'] ?? '';
+          Map<String, dynamic>? userData =
+              userDoc.data() as Map<String, dynamic>?;
+
+          fullname.value = userData?['nama'] ?? '';
+
+          if (userData != null &&
+              userData.containsKey('profileImageUrl') &&
+              userData['profileImageUrl'].toString().isNotEmpty) {
+            profileImageUrl.value = userData['profileImageUrl'];
+          } else {
+            profileImageUrl.value = '';
+            Get.snackbar(
+              'Info',
+              'Foto belum diganti, menggunakan gambar default.',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: Colors.yellow,
+              colorText: Colors.black,
+              icon: Icon(Icons.info, color: Colors.black),
+            );
+          }
         }
       }
     } catch (e) {
-      Get.snackbar('Error', 'Gagal Mendapatkan Data $e');
+      Get.snackbar('Error', 'Gagal Mendapatkan Data: $e');
     } finally {
       isLoading.value = false;
     }
