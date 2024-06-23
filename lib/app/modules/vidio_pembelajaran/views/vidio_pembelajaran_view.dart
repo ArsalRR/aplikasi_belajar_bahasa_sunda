@@ -23,7 +23,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                 color: Color(0xff008DDA),
                 child: AppBar(
                   title: const Text(
-                    'Vidio Materi Bahasa Sunda',
+                    'Materi Vidio',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',

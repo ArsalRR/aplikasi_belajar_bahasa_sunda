@@ -28,7 +28,10 @@ class EditVidioGuruView extends GetView<EditVidioGuruController> {
             backgroundColor: Colors.blue,
             title: Text(
               "Edit Materi Vidio",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white,
+              
+              fontFamily: 'poppins'
+              ),
             ),
             centerTitle: true,
             leading: IconButton(
