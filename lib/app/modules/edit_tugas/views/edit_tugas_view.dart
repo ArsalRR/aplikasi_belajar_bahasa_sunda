@@ -9,6 +9,7 @@ class EditTugasView extends GetView<EditTugasController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: const Color(0xff008DDA),
         title: const Text(
           'Edit Tugas',

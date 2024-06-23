@@ -18,7 +18,6 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
             fontFamily: 'Poppins',
             color: Colors.white,
             fontWeight: FontWeight.bold,
-
           ),
         ),
         leading: IconButton(
@@ -57,6 +56,7 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.blue,
+                          fontFamily: 'poppins'
                         ),
                       ),
                       SizedBox(height: 15),
@@ -80,66 +80,7 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                             itemCount: controller.tugasList.length,
                             itemBuilder: (context, index) {
                               var tugas = controller.tugasList[index];
-                              return GestureDetector(
-                                onTap: () {},
-                                child: Card(
-                                  margin: EdgeInsets.symmetric(vertical: 8.0),
-                                  elevation: 3.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: ListTile(
-                                    contentPadding: EdgeInsets.all(16.0),
-                                    title: Text(
-                                      tugas['namaTugas'],
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Text(tugas['deskripsi']),
-                                    trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        IconButton(
-                                          icon: Icon(Icons.edit,
-                                              color: Colors.blue),
-                                          onPressed: () {
-                                            Get.toNamed('/edit-tugas',
-                                                arguments: tugas);
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: Icon(Icons.delete,
-                                              color: Colors.red),
-                                          onPressed: () {
-                                            QuickAlert.show(
-                                              context: context,
-                                              type: QuickAlertType.confirm,
-                                              title: 'Konfirmasi',
-                                              text:
-                                                  'Apakah Anda yakin ingin menghapus tugas ini?',
-                                              confirmBtnText: 'Ya',
-                                              cancelBtnText: 'Tidak',
-                                              onConfirmBtnTap: () {
-                                                controller
-                                                    .deleteTugas(tugas['id']);
-                                                Get.snackbar(
-                                                  'Tugas Dihapus',
-                                                  'Tugas berhasil dihapus.',
-                                                  snackPosition:
-                                                      SnackPosition.TOP,
-                                                );
-                                                Navigator.of(context).pop();
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
+                              return _buildTugasCard(tugas, context);
                             },
                           );
                         }
@@ -147,6 +88,76 @@ class DaftarTugasSiswaView extends GetView<DaftarTugasSiswaController> {
                     ],
                   ),
                 ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTugasCard(Map<String, dynamic> tugas, BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFFFFF),
+          borderRadius: BorderRadius.circular(15.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 5.0,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ListTile(
+          contentPadding: EdgeInsets.all(16.0),
+          title: Text(
+            tugas['namaTugas'],
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          subtitle: Text(
+            tugas['deskripsi'],
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+            ),
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                icon: Icon(Icons.edit, color: Colors.blue),
+                onPressed: () {
+                  Get.toNamed('/edit-tugas', arguments: tugas);
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.delete, color: Colors.red),
+                onPressed: () {
+                  QuickAlert.show(
+                    context: context,
+                    type: QuickAlertType.confirm,
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menghapus tugas ini?',
+                    confirmBtnText: 'Ya',
+                    cancelBtnText: 'Tidak',
+                    onConfirmBtnTap: () {
+                      controller.deleteTugas(tugas['id']);
+                      Get.snackbar(
+                        'Tugas Dihapus',
+                        'Tugas berhasil dihapus.',
+                        snackPosition: SnackPosition.TOP,
+                      );
+                      Navigator.of(context).pop();
+                    },
+                  );
+                },
               ),
             ],
           ),
