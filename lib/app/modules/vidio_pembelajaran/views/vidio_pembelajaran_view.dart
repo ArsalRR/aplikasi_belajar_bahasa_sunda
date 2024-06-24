@@ -27,7 +27,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   centerTitle: true,
@@ -77,7 +77,7 @@ class VidioPembelajaranView extends GetView<VidioPembelajaranController> {
                         if (url.isNotEmpty) {
                           final uri = Uri.parse(url);
                           if (await canLaunchUrl(uri)) {
-                            await launchUrl(uri);
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
                           } else {
                             QuickAlert.show(
                               context: Get.context!,
