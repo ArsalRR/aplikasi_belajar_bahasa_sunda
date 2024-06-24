@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: "Aplikasi LMS SMP Serang Baru",
-            initialRoute: Routes.LOGIN,
+            initialRoute: Routes.SPLASH,
             getPages: AppPages.routes,
             theme: ThemeData(
               primarySwatch: Colors.indigo,
