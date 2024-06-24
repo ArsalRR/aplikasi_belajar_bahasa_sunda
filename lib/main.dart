@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
 
               if (userSnapshot.hasError) {
                 return _buildErrorScreen(
-                    'Terjadi kesalahan saat mengambil data pengguna.');
+                    'Terjadi kesalahan saat mengambil data pengguna..');
               }
 
               if (!userSnapshot.hasData || userSnapshot.data == null) {
