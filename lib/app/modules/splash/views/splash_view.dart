@@ -24,7 +24,9 @@ class SplashView extends GetView<SplashController> {
                 style: TextStyle(
                     fontSize: 23,
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'poppins'
+                    ),
               ),
             ),
           ),
@@ -40,7 +42,9 @@ class SplashView extends GetView<SplashController> {
                 SizedBox(height: 40),
                 Text(
                   'Selamat datang, mari belajar bahasa sunda degan mudah',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white,
+                  fontFamily: 'poppins'
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -55,7 +59,9 @@ class SplashView extends GetView<SplashController> {
                     padding: EdgeInsets.only(bottom: 40),
                     child: Text(
                       "By kelompok 3",
-                      style: TextStyle(color: Colors.grey[300]),
+                      style: TextStyle(color: Colors.grey[300],
+                      fontFamily: 'poppins'
+                      ),
                     )),
               )
             ],
