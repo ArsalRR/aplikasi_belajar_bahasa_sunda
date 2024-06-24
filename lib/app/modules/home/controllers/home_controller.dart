@@ -2,6 +2,7 @@ import 'package:capstone_project/app/modules/login/views/login_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class HomeController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -30,15 +31,40 @@ class HomeController extends GetxController {
   }
 
   void fetchUserData() async {
-    User? user = auth.currentUser;
-    if (user != null) {
-      email.value = user.email ?? '';
-      DocumentSnapshot userDoc =
-          await firestore.collection('users').doc(user.uid).get();
-      if (userDoc.exists) {
-        fullName.value = userDoc['nama'] ?? '';
-        profileImageUrl.value = userDoc['profileImageUrl'] ?? '';
+    try {
+      isLoading.value = true;
+      User? user = auth.currentUser;
+      if (user != null) {
+        email.value = user.email ?? '';
+        DocumentSnapshot userDoc =
+            await firestore.collection('users').doc(user.uid).get();
+        if (userDoc.exists) {
+          Map<String, dynamic>? userData =
+              userDoc.data() as Map<String, dynamic>?;
+
+          fullName.value = userData?['nama'] ?? '';
+
+          if (userData != null &&
+              userData.containsKey('profileImageUrl') &&
+              userData['profileImageUrl'].toString().isNotEmpty) {
+            profileImageUrl.value = userData['profileImageUrl'];
+          } else {
+            profileImageUrl.value = '';
+            Get.snackbar(
+              'Info',
+              'Foto belum diganti, menggunakan gambar default.',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: Colors.yellow,
+              colorText: Colors.black,
+              icon: Icon(Icons.info, color: Colors.black),
+            );
+          }
+        }
       }
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal Mendapatkan Data: $e');
+    } finally {
+      isLoading.value = false;
     }
   }
 
